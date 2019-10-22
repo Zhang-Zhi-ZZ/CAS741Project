@@ -314,7 +314,7 @@ The physics system of Double Pendulum, as shown in (Section~\nameref{Fig_physics
 Given the masses, lengths of rods, initial angles of masses, and the gravitational constant, the goal statements are:
 \begin{itemize}
 
-\item[GS\refstepcounter{goalnum}\thegoalnum \label{G_meaningfulLabel}:] Show the graphs of motions of the two masses, namely the graphs of $\theta_1$(t) and $\theta_2$(t).
+\item[GS\refstepcounter{goalnum}\thegoalnum \label{G_goal1}:] Calculate the motion of the two masses.
 \end{itemize}
 
 \subsection{Solution Characteristics Specification}\label{sec_solotionSpec}
@@ -1027,8 +1027,8 @@ Input the values from
 \item[R\refstepcounter{reqnum}\thereqnum \label{R_VarifyInputs}:]  
 Check the entered input values to ensure that they do not exceed the data constraints mention in section~\nameref{sec_inputDataCons}
 \item[R\refstepcounter{reqnum}\thereqnum \label{R_Calculate}:] Calculate the equation for the following values: $\theta_1$(t) (from ) and $\theta_1$(t) (from ).
-
-\item[R\refstepcounter{reqnum}\thereqnum \label{R_Output}:] Output graphs of $\theta_1$(t) (from ) and $\theta_1$(t) (from ).
+\item[R\refstepcounter{reqnum}\thereqnum \label{R_Output}:] Output the results to a file.
+\item[R\refstepcounter{reqnum}\thereqnum \label{R_Graphs}:] Output graphs of $\theta_1$(t) (from ) and $\theta_1$(t) (from ).
 
 \end{itemize}
 
@@ -1140,17 +1140,18 @@ The code is modularized.
 
 \begin{table}[H]
 \centering
-\begin{tabular}{|c|c|c|c|c|c|c|c|}
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
 \hline
-  & \iref{force1}& \iref{force2}& \iref{angularAcc1}& \rref{R_Inputs}& \rref{R_VarifyInputs} &  \rref{R_Calculate} & \rref{R_Output}\\
+  & \iref{force1}& \iref{force2}& \iref{angularAcc1}& \rref{R_Inputs}& \rref{R_VarifyInputs} &  \rref{R_Calculate} & \rref{R_Output} & \rref{R_Graphs}\\
 \hline
-\iref{force1}            &&&&&X&X&X \\ \hline
-\iref{force2}            &&&&&X&X&X\\ \hline
-\iref{angularAcc1}         &&&&&X&X&X\\ \hline
-\rref{R_Inputs}         &X&X&X&&&&\\ \hline
-\rref{R_VarifyInputs}         &X&X&X&&&&\\ \hline
-\rref{R_Calculate}     &X&X&X&&&&\\ \hline
-\rref{R_Output}    &X&X&X&&&&\\  
+\iref{force1}            &&&&&X&X&&X\\ \hline
+\iref{force2}            &&&&&X&X&&X\\ \hline
+\iref{angularAcc1}         &&&&&X&X&&X\\ \hline
+\rref{R_Inputs}         &X&X&X&&&&&\\ \hline
+\rref{R_VarifyInputs}         &X&X&X&&&&&\\ \hline
+\rref{R_Calculate}     &X&X&X&&&&&\\ \hline
+\rref{R_Output}    &X&X&X&&&&&\\  
+\rref{R_Graphs}    &X&X&X&&&&&\\
 \hline
 \end{tabular}
 \caption{Traceability Matrix Showing the Connections Between Requirements and Instance Models}
