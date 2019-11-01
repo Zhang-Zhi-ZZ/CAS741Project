@@ -3,6 +3,29 @@
 \usepackage{booktabs}
 \usepackage{tabularx}
 \usepackage{hyperref}
+\usepackage{amsmath, mathtools}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{colortbl}
+\usepackage{xr}
+\usepackage{hyperref}
+\usepackage{longtable}
+\usepackage{xfrac}
+\usepackage{tabularx}
+\usepackage{float}
+\usepackage{siunitx}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{pdflscape}
+\usepackage{afterpage}
+\usepackage{cool}
+\usepackage{comment}
+\usepackage{adjustbox}
+
+\restylefloat{table}
+
+ 
 \hypersetup{
     colorlinks,
     citecolor=black,
@@ -12,13 +35,17 @@
 }
 \usepackage[round]{natbib}
 
-\input{../../Comments}
-\input{../../Common}
+\newcounter{reqnum} %Requirement Number
+\newcommand{\rthereqnum}{P\thereqnum}
+\newcommand{\rref}[1]{R\ref{#1}}
+
+\input{../../Comments.tex}
+\input{../../Common.tex}
 
 \begin{document}
 
-\title{Project Title: System Verification and Validation Plan for \progname{}} 
-\author{Author Name}
+\title{Project Title: System Verification and Validation Plan for Double Pendulum} 
+\author{Zhi Zhang}
 \date{\today}
 	
 \maketitle
@@ -30,8 +57,8 @@
 \begin{tabularx}{\textwidth}{p{3cm}p{2cm}X}
 \toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
 \midrule
-Date 1 & 1.0 & Notes\\
-Date 2 & 1.1 & Notes\\
+Oct.30 & 1.0 & Initial Draft\\
+
 \bottomrule
 \end{tabularx}
 
@@ -52,193 +79,390 @@ Date 2 & 1.1 & Notes\\
   \toprule		
   \textbf{symbol} & \textbf{description}\\
   \midrule 
-  T & Test\\
+  VnV & Verification and Validation\\
+  SRS & Software Requirements Specification\\
+  FR & Functional Requirements\\
+  NFR & Nonfunctional Requirements\\
   \bottomrule
 \end{tabular}\\
-
-\wss{symbols, abbreviations or acronyms -- you can simply reference the SRS
-  tables, if appropriate}
 
 \newpage
 
 \pagenumbering{arabic}
 
-This document ... \wss{provide an introductory blurb and roadmap of the
-  Verification and Validation plan}
+This document provides an overview of the Verification and Validation(VnV) plan for Double Pendulum. The general information is introduced in section~\nameref{sec_generalInfo}. SRS, design, implementation verification plan and software validation plan is introduced in section~\nameref{sec_Plan}. In section~\nameref{sec_sysTest}, tests for both FR and NFR of Double Pendulum will be discussed, with the traceability between test cases and requirements. 
 
-\section{General Information}
+\section{General Information}\label{sec_generalInfo}
 
 \subsection{Summary}
 
-\wss{Say what software is being tested.  Give its name and a brief overview of
-  its general functions.}
+The software to be tested is Double Pendulum. This software allows user to input the initial conditions of double pendulum, calculates the equations for the movements of the two pendulums, and then output the result to a text file. 
 
 \subsection{Objectives}
 
-\wss{State what is intended to be accomplished.  The objective will be around
-  the qualities that are most important for your project.  You might have
-  something like: ``build confidence in the software correctness,''
-  ``demonstrate adequate usability.'' etc.  You won't list all of the qualities,
-  just those that are most important.}
-
+The objective of the VnV plan is to verify the FR and NFR, as found in the SRS titled Double Pendulum, has been met. The most important requirement is the correctness of the software, the goal is to build confidence in the software correctness by comparing the outputs of the software with the Double Pendulum tool from myPhysicsLab.com~\cite{Double_Pendulum}. Adequate usability also needs to be achieved since the software is designed for any user who is interested in the motion of a double pendulum. 
+ 
 \subsection{Relevant Documentation}
 
-\wss{Reference relevant documentation.  This will definitely include your SRS}
+The relevant documentations are:
+\begin{itemize}
+    \item SRS
+    \item Unit VnV Plan
+\end{itemize}
 
-\section{Plan}
+\section{Plan}\label{sec_Plan}
 	
+
 \subsection{Verification and Validation Team}
 
-\wss{Probably just you.  :-)}
+\begin{itemize}
+    \item Zhi Zhang
+\end{itemize}
+
 
 \subsection{SRS Verification Plan}
 
-\wss{List any approaches you intend to use for SRS verification.  This may just
-  be ad hoc feedback from reviewers, like your classmates, or you may have
-  something more rigorous/systematic in mind..}
+The SRS verification plan will include feedback from author's professor and classmates, mainly the domain expert. 
+
 
 \subsection{Design Verification Plan}
+
+The design verification plan will include feedback from author's professor and classmates, mainly the domain expert. 
 
 \wss{Plans for design verification}
 
 \subsection{Implementation Verification Plan}
 
-\wss{You should at least point to the tests listed in this document and the unit
-  testing plan.}
+The implementation verification plan will include the followings:
+\begin{itemize}
+    \item Code walkthroughs: both the developer and the domain expert will inspect the code to ensure all the requirements of the SRS are met.
+    \item Unit testing: all modules are to be unit tested to ensure correctness, more details of unit testing can be found in the Unit Testing Plan.
+    \item Dynamic testing: the software will be executed and all its functions will be tested mannually by test team.
+\end{itemize}
 
-\wss{In this section you would also give any details of any plans for static verification of
-  the implementation.  Potential techniques include code walkthroughs, code
-  inspection, static analyzers, etc.}
 
 \subsection{Software Validation Plan}
 
-\wss{If there is any external data that can be used for validation, you should
-  point to it here.  If there are no plans for validation, you should state that
-  here.}
+N/A
 
-\section{System Test Description}
+
+\section{System Test Description}\label{sec_sysTest}
 	
 \subsection{Tests for Functional Requirements}
 
-\wss{Subsets of the tests may be in related, so this section is divided into
-  different areas.  If there are no identifiable subsets for the tests, this
-  level of document structure can be removed.}
+There are five functional requirements described in section 5.1 of the SRS. 
 
-\wss{Include a blurb here to explain why the subsections below
-  cover the requirements.  References to the SRS would be good.}
+\noindent \begin{itemize}
 
-\subsubsection{Area of Testing1}
+\item[R\refstepcounter{reqnum}\thereqnum \label{R_Inputs}:] 
+Input the required values into the corresponding area.
+\item[R\refstepcounter{reqnum}\thereqnum \label{R_VarifyInputs}:]  
+Check the entered input values to ensure that they do not exceed the data constraints.
+\item[R\refstepcounter{reqnum}\thereqnum \label{R_Calculate}:] Calculate the equation for the following values: $\theta_1$(t) and $\theta_1$(t).
+\item[R\refstepcounter{reqnum}\thereqnum \label{R_Output}:] Output the results to a file.
+\item[R\refstepcounter{reqnum}\thereqnum \label{R_Graphs}:] Output graphs of $\theta_1$(t) and $\theta_1$(t).
 
-\wss{It would be nice to have a blurb here to explain why the subsections below
-  cover the requirements.  References to the SRS would be good.  If a section
-  covers tests for input constraints, you should reference the data constraints
-  table in the SRS.}
-		
-\paragraph{Title for Test}
+Double Pendulum shall verify that the inputs are valid, shall guarantee the calculation is correct and the outputs are in the correct form.  
+
+Detailed test plan for the five functional requirements will be covered in the next five subsections.
+\end{itemize}
+
+\subsubsection{Input Verification}\label{InputVerif}
+
+\begin{table}[H]
+  \caption{Input Variables} \label{TblInputVar}
+  \renewcommand{\arraystretch}{1.2}
+\noindent \begin{longtable*}{l l l l c} 
+  \toprule
+  \textbf{Var} & \textbf{Physical Constraints} & \textbf{Software Constraints} &
+                             \textbf{Typical Value} & \textbf{Uncertainty}\\
+  \midrule 
+  $m_1$ & $m_1 > 0$ & - & \si[per-mode=symbol] {\kilogram} & 10\%
+  \\
+  $m_2$ & $m_2 > 0$ & - & \si[per-mode=symbol] {\kilogram} & 10\%
+  \\
+  $L_1$ & $L_1 > 0$ & - & \si[per-mode=symbol] {\metre} & 10\%
+  \\
+  $L_2$ & $L_2 > 0$ & - & \si[per-mode=symbol] {\metre} & 10\%
+  \\
+  $\theta_1$ & $\theta_1 \neq 0$ & - & \si[per-mode=symbol] {\degree} & 10\%
+  \\
+  $\theta_2$ & $\theta_2 \neq 0$ & - & \si[per-mode=symbol] {\degree} & 10\%
+  \\
+  $g$ & $g > 0$ & - & \si[per-mode=symbol] {\newton\per\kilogram} & 10\%
+  \\
+  \bottomrule
+\end{longtable*}
+\end{table}
+
+
+The above table is the data constraints table from SRS. The test in this section covers requirements R.\ref{R_Inputs} and R.\ref{R_VarifyInputs}.
+
+\paragraph{Invalid Inputs}
 
 \begin{enumerate}
-
-\item{test-id1\\}
-
-Control: Manual versus Automatic
 					
-Initial State: 
+\item{Non-positive Mass}
+
+Control: Manual  
+					
+Initial State: Double Pendulum is started and running
 					
 Input: 
-					
-Output: \wss{The expected result for the given inputs}
+$m_1$ = -10
+$m_2$ = 0
+$L_1$ = 10
+$L_2$	= 10			
+$\theta_1$ = 10 
+$\theta_2$ = 10
+$g$ = 9.8
+Output: An error message of "Please input positive value for the mass".
 
-Test Case Derivation: \wss{Justify the expected value given in the Output field}
-					
-How test will be performed: 
-					
-\item{test-id2\\}
+Test Case Derivation: Check if the error message pops up. 
 
-Control: Manual versus Automatic
-					
-Initial State: 
-					
+How test will be performed: Manually input the above the Input data to the software by test team. 
+
+
+
+\item{Non-positive Length of Rods}  
+
+Control: Manual 
+          
+Initial State: Double Pendulum is started and running
+          
 Input: 
-					
-Output: \wss{The expected result for the given inputs}
+$m_1$ = 10
+$m_2$ = 20
+$L_1$ = -10
+$L_2$ = 0      
+$\theta_1$ = 10 
+$\theta_2$ = 10
+$g$ = 9.8
+          
+Output: An error message of "Please input positive value for the the length of rods".
 
-Test Case Derivation: \wss{Justify the expected value given in the Output field}
+Test Case Derivation: Check if the error message pops up. 
 
-How test will be performed: 
+How test will be performed: Manually input the above the Input data to the software by test team. 
+ 
+          
+\item{Zero Starting Angle}  
+Control: Manual  
+          
+Initial State: Double Pendulum is started and running
+          
+Input: 
+$m_1$ = 10
+$m_2$ = 10
+$L_1$ = 10
+$L_2$ = 10      
+$\theta_1$ = 0 
+$\theta_2$ = 0
+$g$ = 9.8
+Output: An error message of "Please input non-zero value for the starting angle".
+
+Test Case Derivation: Check if the error message pops up. 
+
+How test will be performed: Manually input the above the Input data to the software by test team. 
+\end{enumerate}
+
+\paragraph{Valid Inputs} 
+
+\begin{enumerate}
+          
+\item{Valid Values}  
+
+Control: Manual  
+          
+Initial State: Double Pendulum is started and running
+          
+Input: 
+$m_1$ = 10
+$m_2$ = 10
+$L_1$ = 10
+$L_2$ = 10      
+$\theta_1$ = 10 
+$\theta_2$ = 10
+$g$ = 9.8
+Output: The output file is generated and the graphs are displayed.
+
+Test Case Derivation: Check if there is output file and the graphs. 
+
+How test will be performed: Manually input the above the Input data to the software by test team. 
 
 \end{enumerate}
 
-\subsubsection{Area of Testing2}
+\subsubsection{Outputs Verification}\label{VRF_Output}
 
-...
+This section covers requirements R.\ref{R_Calculate}, R.\ref{R_Output} and R.\ref{R_Graphs}.
+
+\paragraph{Outputs Correctness Tests}
+
+\begin{enumerate}
+
+\item{File Created}  
+
+Type: Manual
+          
+Initial State: Double Pendulum takes valid inputs
+          
+Input/Condition: Press Start button
+          
+Output/Result: An output file created 
+          
+How test will be performed: Test team will go to the directory of Double Pendulum to check the existence of the output file.
+
+          
+\item{Graph Generated} 
+
+Type: Dynamic, Manual 
+          
+Initial State: Double Pendulum takes valid inputs and the output file is generated 
+          
+Input/Condition: Press Graph button 
+          
+Output/Result: Graphs of $\theta_1$ and $\theta_2$ displayed on the screen of the software 
+          
+How test will be performed: Test team will manually press the Graph button and check if the graph is displayed
+
+\item{Correct Output}  
+
+Type: Dynamic, Manual 
+          
+Initial State: The graphs are generated 
+          
+Input/Condition: Compare the graphs to the graphs generated on myPhysicsLab.com~\cite{Double_Pendulum} with the same inputs.
+          
+Output/Result: Check if the graphs match.
+          
+How test will be performed: Test team will manually input the same data into myPhysicsLab.com~\cite{Double_Pendulum} and compare the graphs.
+
+
+\end{enumerate}
+
 
 \subsection{Tests for Nonfunctional Requirements}
 
-\wss{The nonfunctional requirements for accuracy will likely just reference the
-  appropriate functional tests from above.  The test cases should mention
-  reporting the relative error for these tests.}
+There are five nonfunctional requirements described in section 6.1 of SRS.
 
-\wss{Tests related to usability could include conducting a usability test and
-  survey.}
+\noindent \begin{itemize}
 
-\subsubsection{Area of Testing1}
+\item[NFR\refstepcounter{reqnum}\thereqnum \label{NFR_Correct}:] 
+The outputs of the code have the properties described in table~\nameref{TblOutputVar}.
+\item[NFR\refstepcounter{reqnum}\thereqnum \label{NFR_Verifiable}:]  
+The code is tested with complete verification and validation plan.
+\item[NFR\refstepcounter{reqnum}\thereqnum \label{NFR_Reusable}:]
+The code is modularized. 
+\item[NFR\refstepcounter{reqnum}\thereqnum \label{NFR_Maintainable}:]
+The traceability between requirements, assumptions, theoretical models, general definitions, data definitions, instance models, likely changes, unlikely changes, and modules is completely recorded in traceability matrices in teh SRS and module guide. 
+\item[NFR\refstepcounter{reqnum}\thereqnum \label{NFR_Portable}:]
+The code is able to be run in different environments. 
+\end{itemize}
+
+\begin{table}[H]
+\caption{Output Variables} \label{TblOutputVar}
+\renewcommand{\arraystretch}{1.2}
+\noindent \begin{longtable*}{l l} 
+  \toprule
+  \textbf{Var} & \textbf{Physical Constraints} \\
+  \midrule 
+  ${\theta_1}''$ & ${\theta_1}'' \neq 0$\\
+  ${\theta_2}''$ & ${\theta_2}'' \neq 0$\\
+  \bottomrule
+\end{longtable*}
+\end{table}
+
+
+\subsubsection{Correctness and Verifiability}\label{CnV}
 		
-\paragraph{Title for Test}
+The correctness test covers the NFR~\ref{NFR_Correct}, and the verifiability test covers the NFR ~\ref{NFR_Verifiable}. Both tests are to ensure that the software meets the SRS, and they are been tested in the section ~\ref{VRF_Output}.
+
+\subsubsection{Maintainability}\label{MainTest}
+The maintainability test covers the NFR~\ref{NFR_Maintainable}. 
+\paragraph{Maintainability Testing\\} 
+
+Type: Manual, Nonfunctional, Dynamic
+          
+Initial State: N/A
+          
+Input/Condition: Existing Double Pendulum software
+          
+Output/Result: Update Double Pendulum software
+          
+How test will be performed: Test team will try to add new features to the software or modify some parts of the software.
+
+
+\subsubsection{Re-usability}\label{ReuseTest}
+The re-usability test covers the NFR~\ref{NFR_Reusable}. 
+
+\paragraph{Re-usability Testing\\}
+Type: Manual, Nonfunctional
+
+Initial State: N/A
+          
+Input/Condition: Existing Double Pendulum system
+          
+Output/Result: N/A
+          
+How test will be performed: Test team will perform code walk through to ensure that all codes are modularized. 
+
+
+\subsubsection{Portability} \label{PortTest}
+The portability test covers the NFR~\ref{NFR_Portable}.
+
+\paragraph{Portability Testing\\}
 
 \begin{enumerate}
+\item{Portability on Windows System} 
+Type: Manual, Dynamic
 
-\item{test-id1\\}
+Initial State: Double Pendulum has been successfully installed on a Windows system
+          
+Input/Condition: Operate the basic functions of the software
+          
+Output/Result: The software performs all functions 
+          
+How test will be performed: The test will be performed by test team manually. 
 
-Type: 
-					
-Initial State: 
-					
-Input/Condition: 
-					
-Output/Result: 
-					
-How test will be performed: 
-					
-\item{test-id2\\}
+\item{Portability on MacOS system} 
 
-Type: Functional, Dynamic, Manual, Static etc.
-					
-Initial State: 
-					
-Input: 
-					
-Output: 
-					
-How test will be performed: 
+Type: Manual, Dynamic
+
+Initial State: Double Pendulum has been successfully installed on a MacOS system
+          
+Input/Condition: Operate the basic functions of the software
+          
+Output/Result: The software performs all functions 
+          
+How test will be performed: The test will be performed by test team manually. 
 
 \end{enumerate}
-
-\subsubsection{Area of Testing2}
-
-...
-
 \subsection{Traceability Between Test Cases and Requirements}
 
-\wss{Provide a table that shows which test cases are supporting which
-  requirements.}
-				
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|}
+\hline
+  & \rref{R_Inputs}& \rref{R_VarifyInputs} &  \rref{R_Calculate} & \rref{R_Output} & \rref{R_Graphs}& \rref{NFR_Correct}& \rref{NFR_Verifiable} & \rref{NFR_Reusable} & \rref{NFR_Maintainable} & \rref{NFR_Portable}\\
+\hline
+\ref{InputVerif}      &x&x&&&&&&&&\\ \hline
+\ref{VRF_Output}     &&&x&x&x&&&&&\\ \hline
+\ref{CnV}      &&&&x&x&x&x&&&\\ \hline
+\ref{MainTest}      &&&&&&&& &x&\\ \hline
+\ref{ReuseTest}      &&&&&&&&x&&\\ \hline
+\ref{PortTest}      &&&&&&&&&&x\\  
+\hline
+\end{tabular}
+\caption{Traceability Between Test Cases and Requirements}
+\label{Table:R_trace}
+
+\end{table}
+		
+\newpage    		
 \bibliographystyle{plainnat}
 
-\bibliography{SRS}
+\bibliography{../../../refs/References}
 
 \newpage
-
-\section{Appendix}
-
-This is where you can place additional information.
-
-\subsection{Symbolic Parameters}
-
-The definition of the test cases will call for SYMBOLIC\_CONSTANTS.
-Their values are defined in this section for easy maintenance.
-
-\subsection{Usability Survey Questions?}
-
-\wss{This is a section that would be appropriate for some projects.}
 
 \end{document}
