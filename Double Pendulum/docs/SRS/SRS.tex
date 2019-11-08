@@ -236,6 +236,8 @@ systems. The symbols are listed in alphabetical order.
 \section{Introduction}\label{sec_intro}
 A double pendulum consists of two pendulums attached end to end, its moving curve is highly sensitive to initial conditions. Therefore, it is useful to have a program to simulate the motion of double pendulum to exhibit the chaotic characteristics of it. The program documented here is called Double Pendulum.\\\\The following section provides an overview of Software Requirements Specification(SRS) for Double Pendulum. This section explains the purpose of this document, the scope of the requirements, the characteristics of intended reader, and the organization of document. 
 
+This document is based on the template introduced in \cite{Smith2006}, \cite{SmithAndLai2005}, and \cite{SmithMcCutchanAndCarette2017}.
+
 \subsection{Purpose of Document}\label{sec_purpose}
 The purpose of the document is to provide detailed requirements of the Double Pendulum project for people who are interested in the motion of double pendulum, and to provide planning for the design stage. 
 
@@ -326,7 +328,7 @@ Given the masses, lengths of rods, initial angles of masses, and the gravitation
 The instance models that govern Double Pendulum are presented in section~\nameref{sec_instanceModel}. The information to understand the meaning of the instance models and their derivation is also presented, so that the instance models can be verified. 
 
 \subsubsection{Assumptions}\label{sec_assumpt}
-This section simplifies the original problem and helps in developing the theoretical models by filling in the missing information for the phisical system. The assumptions refines the scope by providing more detail.
+This section simplifies the original problem and helps in developing the theoretical models by filling in the missing information for the physical system. The assumptions refines the scope by providing more detail.
 \begin{itemize}
 
 \item[A\refstepcounter{assumpnum}\theassumpnum \label{A_2D}:]
@@ -536,7 +538,7 @@ Description & $x_1$ is the horizontal position of the top pendulum(m)\\
 & $L_1$ is the length of the top rod(m)\\
 & $\theta_1$ is the angle of the top rod(\si[per-mode=symbol] {\degree})\\
 \hline
-Sources& https://www.myphysicslab.com/pendulum/double-pendulum-en.html\\
+Sources& https://www.myphysicslab.com/pendulum/double-pendulum-en.html \newline\cite{Double_Pendulum}\\
 \hline
 Ref.\ By & ~\ddref{positionx2}, ~\ddref{velocityx1} \\
 \hline
@@ -1003,7 +1005,7 @@ is intended to provide a feel for a common scenario.
 \end{table}
 
 \subsubsection{Properties of a Correct Solution}\label{sec_corSol}
-Table ~\nameref{TblOutputVar} shows the data constraints on the outout variables. The column for physical constraints gives the physical limitations on the range of values that can be taken by the variable.
+Table ~\nameref{TblOutputVar} shows the data constraints on the output variables. The column for physical constraints gives the physical limitations on the range of values that can be taken by the variable.
 
 \begin{table}[!h]
 \caption{Output Variables} \label{TblOutputVar}
@@ -1024,7 +1026,7 @@ software is expected to complete, and the nonfunctional requirements, the
 qualities that the software is expected to exhibit.
 
 \subsection{Functional Requirements}\label{sec_funReq}
-This section provides the functional requirements, the tasks and behaviours that the software is expected to complete. \\
+This section provides the functional requirements, the tasks and behaviors that the software is expected to complete. \\
 \noindent \begin{itemize}
 
 \item[R\refstepcounter{reqnum}\thereqnum \label{R_Inputs}:] 
@@ -1162,7 +1164,12 @@ The code is able to be run in different environments.
 \label{Table:R_trace}
 \end{table}
 
+\newpage
 
+\bibliographystyle {plainnat}
+\bibliography {../../refs/References}
+
+\newpage
 
 
 \section{Values of Auxiliary Constants}\label{sec_auxConst}
