@@ -43,6 +43,8 @@
 *.blg
 *.lof
 *.lot
+*.fls
+*.fdb_latexmk
 
 # DS Store (for Macs)
 *.DS_Store
