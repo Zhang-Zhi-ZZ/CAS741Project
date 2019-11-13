@@ -376,34 +376,6 @@ This section focuses on the general equations and laws that Double Pendulum is b
 \end{tabular}
 \end{minipage}\\
 
-\begin{comment}
-\noindent
-\begin{minipage}{\textwidth}
-\renewcommand*{\arraystretch}{1.5}
-\begin{tabular}{| p{\colAwidth} | p{\colBwidth}|}
-  \hline
-  \rowcolor[gray]{0.9}
-  Number& T\refstepcounter{theorynum}\thetheorynum \label{T_AirDrag}\\
-  \hline
-  Label&\bf Air drag force\\
-  \hline
-  Equation& \[F_a=\frac{1}{2}c\rho Av^2\]\\
-  \hline
-  Description & $F_a$ is the air drag force(N))\newline
-                c is the dimensionless drag coefficient\newline
-                $\rho$ is the density of air (\( \frac{kg}{s^{3}} \)\newline
-                A is the cross-sectional area exposed to the air flow($m^2$)\newline
-                v is the air flow speed(\( \frac{m}{s}\))\\
-  \hline
-  Source &
-           \url{http://demonstrations.wolfram.com/MotionOfAPendulumInTheWind/}\\
-  \hline
-  Ref.\ By & \\
-  \hline
-\end{tabular}
-\end{minipage}\\
-\end{comment}
-
 \noindent
 \begin{minipage}{\textwidth}
 \renewcommand*{\arraystretch}{1.5}
@@ -424,7 +396,7 @@ This section focuses on the general equations and laws that Double Pendulum is b
            \url{http://wearcam.org/absement/Derivatives_of_displacement.htm}\\
  
   \hline
-  Ref.\ By & ~\ddref{velocityx1}, ~\ddref{velocityy1}, ~\ddref{velocityx2},~\ddref{velocityy2}\\
+  Ref.\ By & ~\dref{velocityx1}, ~\dref{velocityy1}, ~\dref{velocityx2},~\dref{velocityy2}\\
   \hline
 \end{tabular}
 \end{minipage}\\
@@ -449,7 +421,7 @@ This section focuses on the general equations and laws that Double Pendulum is b
   Source &
            \url{http://wearcam.org/absement/Derivatives_of_displacement.htm}\\
   \hline
-  Ref.\ By & ~\ddref{accelerationx1},~\ddref{accelerationy1}, ~\ddref{accelerationx2}, ~\ddref{accelerationy2}\\
+  Ref.\ By & ~\dref{accelerationx1},~\dref{accelerationy1}, ~\dref{accelerationx2}, ~\dref{accelerationy2}\\
   \hline
 \end{tabular}
 \end{minipage}\\
@@ -459,182 +431,13 @@ This section focuses on the general equations and laws that Double Pendulum is b
 
 \subsubsection{General Definitions}\label{sec_generalDef}
 This section collects the laws and equations that will be used to build the instance models.
-
-\begin{comment}
-\noindent
-\begin{minipage}{\textwidth}
-\renewcommand*{\arraystretch}{1.5}
-\begin{tabular}{| p{\colAwidth} | p{\colBwidth}|}
-  \hline
-  \rowcolor[gray]{0.9}
-  Refname& GD\refstepcounter{defnum}\thedefnum \label{sin}\\
-  \hline
-  Label&\bf Sine Rule\\
-  \hline
-  Equation& \[\sin\theta = \frac{Opposite}{Hypotenuse}\] \\
-  \hline
-  Description & \includegraphics[width=0.3\textwidth, height=30mm]{triangle.png} 
-
-                Opposite is the length of opposite edge(m)\newline
-                Hypotenuse is the length of the hypotenuse edge(m)\newline\\
-  \hline
-  Source &
-           \url{https://en.wikipedia.org/wiki/Trigonometry}\\
-  \hline
-  Ref.\ By & \\
-  \hline
-\end{tabular}
-\end{minipage}\\
-
-
-\noindent
-\begin{minipage}{\textwidth}
-\renewcommand*{\arraystretch}{1.5}
-\begin{tabular}{| p{\colAwidth} | p{\colBwidth}|}
-  \hline
-  \rowcolor[gray]{0.9}
-  Refname& GD\refstepcounter{defnum}\thedefnum \label{cos}\\
-  \hline
-  Label&\bf Cosine Rule\\
-  \hline
-  Equation& \[\cos\theta = \frac{Adjacent}{Hypotenuse}\] \\
-  \hline
-  Description & \includegraphics[width=0.3\textwidth, height=30mm]{triangle.png} 
-
-                Adjacent is the length of adjacent edge(m)\newline
-                Hypotenuse is the length of the hypotenuse edge(m)\newline\\
-  \hline
-  Source &
-           \url{https://en.wikipedia.org/wiki/Trigonometry}\\
-  \hline
-  Ref.\ By & \\
-  \hline
-\end{tabular}
-\end{minipage}\\
-\end{comment}
-
-% may not have GD
-
-\subsubsection{Data Definitions}\label{sec_dataDef}
-This section collects and defines all the data needed to build the instance models. \\
-
 \noindent
 \begin{minipage}{\textwidth}
 \renewcommand*{\arraystretch}{1.5}
 \begin{tabular}{| p{\colAwidth} | p{\colBwidth}|}
 \hline
 \rowcolor[gray]{0.9}
-Number& DD\refstepcounter{datadefnum}\thedatadefnum \label{positionx1}\\
-\hline
-Label& \bf x-component of initial positions of the top pendulum\\
-\hline
-Symbol &$x_1$\\
-\hline
-SI Units & \si{\metre}\\
-\hline
-Equation&\[x_1=L_1sin\theta_1\]\\
-\hline
-Description & $x_1$ is the horizontal position of the top pendulum(m)\\
-& $L_1$ is the length of the top rod(m)\\
-& $\theta_1$ is the angle of the top rod(\si[per-mode=symbol] {\degree})\\
-\hline
-Sources& https://www.myphysicslab.com/pendulum/double-pendulum-en.html \newline\cite{Double_Pendulum}\\
-\hline
-Ref.\ By & ~\ddref{positionx2}, ~\ddref{velocityx1} \\
-\hline
-\end{tabular}
-\end{minipage}\\
-
-\noindent
-\begin{minipage}{\textwidth}
-\renewcommand*{\arraystretch}{1.5}
-\begin{tabular}{| p{\colAwidth} | p{\colBwidth}|}
-\hline
-\rowcolor[gray]{0.9}
-Number& DD\refstepcounter{datadefnum}\thedatadefnum \label{positiony1}\\
-\hline
-Label& \bf y-component of initial positions of the top pendulum\\
-\hline
-Symbol &$y_1$\\
-\hline
-SI Units & \si{\metre}\\
-\hline
-Equation&\[y_1=-L_1cos\theta_2\]\\
-\hline
-Description & $y_1$ is the vertical position of the top pendulum(m)\\
-& $L_1$ is the length of the top rod(m)\\
-& $\theta_1$ is the angle of the top rod(\si[per-mode=symbol] {\degree})\\
-\hline
-Sources& https://www.myphysicslab.com/pendulum/double-pendulum-en.html\\
-\hline
-Ref.\ By & ~\ddref{positiony2}, ~\ddref{velocityy2}\\
-\hline
-\end{tabular}
-\end{minipage}\\
-
-\noindent
-\begin{minipage}{\textwidth}
-\renewcommand*{\arraystretch}{1.5}
-\begin{tabular}{| p{\colAwidth} | p{\colBwidth}|}
-\hline
-\rowcolor[gray]{0.9}
-Number& DD\refstepcounter{datadefnum}\thedatadefnum \label{positionx2}\\
-\hline
-Label& \bf x-component of initial positions of the bottom mass\\
-\hline
-Symbol &$x_2$\\
-\hline
-SI Units & \si{\metre}\\
-\hline
-Equation&\[x_2=x_1+L_2sin\theta_2\]\\
-\hline
-Description & $x_2$ is the horizontal position of the bottom pendulum(m)\\
-& $L_2$ is the length of the bottom rod(m)\\
-& $\theta_2$ is the angle of the botom rod(\si[per-mode=symbol] {\degree})\\
-& $x_1$ is the horizontal position of the top pendulum(m)\\
-\hline
-Sources& https://www.myphysicslab.com/pendulum/double-pendulum-en.html\\
-\hline
-Ref.\ By & ~\ddref{velocityx2} \\
-\hline
-\end{tabular}
-\end{minipage}\\
-
-\noindent
-\begin{minipage}{\textwidth}
-\renewcommand*{\arraystretch}{1.5}
-\begin{tabular}{| p{\colAwidth} | p{\colBwidth}|}
-\hline
-\rowcolor[gray]{0.9}
-Number& DD\refstepcounter{datadefnum}\thedatadefnum \label{positiony2}\\
-\hline
-Label& \bf y-component of initial positions of the bottom pendulum\\
-\hline
-Symbol &$y_2$\\
-\hline
-SI Units & \si{\metre}\\
-\hline
-Equation&\[y_2=y_1-L_2cos\theta_2\]\\
-\hline
-Description & $y_2$ is the vertical position of the bottom pendulum(m)\\
-& $L_2$ is the length of the bottom rod(m)\\
-& $\theta_2$ is the angle of the botom rod(\si[per-mode=symbol] {\degree})\\
-& $y_1$ is the vertical position of the top pendulum(m)\\
-\hline
-Sources& https://www.myphysicslab.com/pendulum/double-pendulum-en.html\\
-\hline
-Ref.\ By & ~\ddref{velocityy2} \\
-\hline
-\end{tabular}
-\end{minipage}\\
-
-\noindent
-\begin{minipage}{\textwidth}
-\renewcommand*{\arraystretch}{1.5}
-\begin{tabular}{| p{\colAwidth} | p{\colBwidth}|}
-\hline
-\rowcolor[gray]{0.9}
-Number& DD\refstepcounter{datadefnum}\thedatadefnum \label{velocityx1}\\
+Number& GD\refstepcounter{defnum}\thedefnum \label{velocityx1}\\
 \hline
 Label& \bf x-component of velocity of the top pendulum\\
 \hline
@@ -651,7 +454,7 @@ Description & ${x_1}'$ is the horizontal velocity of the top pendulum(\si[per-mo
 \hline
 Sources& https://www.myphysicslab.com/pendulum/double-pendulum-en.html\\
 \hline
-Ref.\ By & ~\ddref{accelerationx1}\\
+Ref.\ By & ~\dref{accelerationx1}\\
 \hline
 \end{tabular}
 \end{minipage}\\
@@ -663,7 +466,7 @@ Ref.\ By & ~\ddref{accelerationx1}\\
 \begin{tabular}{| p{\colAwidth} | p{\colBwidth}|}
 \hline
 \rowcolor[gray]{0.9}
-Number& DD\refstepcounter{datadefnum}\thedatadefnum \label{velocityy1}\\
+Number& GD\refstepcounter{defnum}\thedefnum \label{velocityy1}\\
 \hline
 Label& \bf y-component of velocity of the top mass\\
 \hline
@@ -680,7 +483,7 @@ Description & ${y_1}'$ is the vertical velocity of the top pendulum(\si[per-mode
 \hline
 Sources& https://www.myphysicslab.com/pendulum/double-pendulum-en.html\\
 \hline
-Ref.\ By & ~\ddref{accelerationy1}\\
+Ref.\ By & ~\dref{accelerationy1}\\
 \hline
 \end{tabular}
 \end{minipage}\\
@@ -691,7 +494,7 @@ Ref.\ By & ~\ddref{accelerationy1}\\
 \begin{tabular}{| p{\colAwidth} | p{\colBwidth}|}
 \hline
 \rowcolor[gray]{0.9}
-Number& DD\refstepcounter{datadefnum}\thedatadefnum \label{velocityx2}\\
+Number& GD\refstepcounter{defnum}\thedefnum \label{velocityx2}\\
 \hline
 Label& \bf x-component of velocity of the bottom pendulum\\
 \hline
@@ -709,7 +512,7 @@ Description & {$x_2$}' is the horizontal velocity of the bottom pendulum(m/s)\\
 \hline
 Sources& https://www.myphysicslab.com/pendulum/double-pendulum-en.html\\
 \hline
-Ref.\ By & ~\ddref{accelerationx2}\\
+Ref.\ By & ~\dref{accelerationx2}\\
 \hline
 \end{tabular}
 \end{minipage}\\
@@ -720,7 +523,7 @@ Ref.\ By & ~\ddref{accelerationx2}\\
 \begin{tabular}{| p{\colAwidth} | p{\colBwidth}|}
 \hline
 \rowcolor[gray]{0.9}
-Number& DD\refstepcounter{datadefnum}\thedatadefnum \label{velocityy2}\\
+Number& GD\refstepcounter{defnum}\thedefnum \label{velocityy2}\\
 \hline
 Label& \bf y-component of velocity of the bottom pendulum\\
 \hline
@@ -738,7 +541,7 @@ Description & {$y_2$}' is the vertical velocity of the bottom pendulum(m/s)\\
 \hline
 Sources& https://www.myphysicslab.com/pendulum/double-pendulum-en.html\\
 \hline
-Ref.\ By & ~\ddref{accelerationy2}\\
+Ref.\ By & ~\dref{accelerationy2}\\
 \hline
 \end{tabular}
 \end{minipage}\\
@@ -749,7 +552,7 @@ Ref.\ By & ~\ddref{accelerationy2}\\
 \begin{tabular}{| p{\colAwidth} | p{\colBwidth}|}
 \hline
 \rowcolor[gray]{0.9}
-Number& DD\refstepcounter{datadefnum}\thedatadefnum \label{accelerationx1}\\
+Number& GD\refstepcounter{defnum}\thedefnum \label{accelerationx1}\\
 \hline
 Label& \bf x-component of acceleration of the top pendulum\\
 \hline
@@ -767,7 +570,7 @@ Description & {$x_1$}'' is the horizontal acceleration of the top pendulum(\si[p
 \hline
 Sources& https://www.myphysicslab.com/pendulum/double-pendulum-en.html\\
 \hline
-Ref.\ By & ~\ddref{accelerationx2}, ~\iref{force1}\\
+Ref.\ By & ~\dref{accelerationx2}, ~\iref{force1}\\
 \hline
 \end{tabular}
 \end{minipage}\\
@@ -778,7 +581,7 @@ Ref.\ By & ~\ddref{accelerationx2}, ~\iref{force1}\\
 \begin{tabular}{| p{\colAwidth} | p{\colBwidth}|}
 \hline
 \rowcolor[gray]{0.9}
-Number& DD\refstepcounter{datadefnum}\thedatadefnum \label{accelerationy1}\\
+Number& GD\refstepcounter{defnum}\thedefnum \label{accelerationy1}\\
 \hline
 Label& \bf y-component of acceleration of the top pendulum\\
 \hline
@@ -796,7 +599,7 @@ Description & {$y_1$}'' is the vertical acceleration of the top pendulum(\si[per
 \hline
 Sources& https://www.myphysicslab.com/pendulum/double-pendulum-en.html\\
 \hline
-Ref.\ By & ~\ddref{accelerationy2}, ~\iref{force1} \\
+Ref.\ By & ~\dref{accelerationy2}, ~\iref{force1} \\
 \hline
 \end{tabular}
 \end{minipage}\\
@@ -807,7 +610,7 @@ Ref.\ By & ~\ddref{accelerationy2}, ~\iref{force1} \\
 \begin{tabular}{| p{\colAwidth} | p{\colBwidth}|}
 \hline
 \rowcolor[gray]{0.9}
-Number& DD\refstepcounter{datadefnum}\thedatadefnum \label{accelerationx2}\\
+Number& GD\refstepcounter{defnum}\thedefnum \label{accelerationx2}\\
 \hline
 Label& \bf x-component of acceleration of the bottom pendulum\\
 \hline
@@ -837,7 +640,7 @@ Ref.\ By & ~\iref{force2}\\
 \begin{tabular}{| p{\colAwidth} | p{\colBwidth}|}
 \hline
 \rowcolor[gray]{0.9}
-Number& DD\refstepcounter{datadefnum}\thedatadefnum \label{accelerationy2}\\
+Number& GD\refstepcounter{defnum}\thedefnum \label{accelerationy2}\\
 \hline
 Label& \bf y-component of acceleration of the bottom pendulum\\
 \hline
@@ -860,6 +663,121 @@ Ref.\ By & ~\iref{force2}\\
 \hline
 \end{tabular}
 \end{minipage}\\
+
+
+\subsubsection{Data Definitions}\label{sec_dataDef}
+This section collects and defines all the data needed to build the instance models. \\
+
+\noindent
+\begin{minipage}{\textwidth}
+\renewcommand*{\arraystretch}{1.5}
+\begin{tabular}{| p{\colAwidth} | p{\colBwidth}|}
+\hline
+\rowcolor[gray]{0.9}
+Number& DD\refstepcounter{datadefnum}\thedatadefnum \label{positionx1}\\
+\hline
+Label& \bf x-component of initial positions of the top pendulum\\
+\hline
+Symbol &$x_1$\\
+\hline
+SI Units & \si{\metre}\\
+\hline
+Equation&\[x_1=L_1sin\theta_1\]\\
+\hline
+Description & $x_1$ is the horizontal position of the top pendulum(m)\\
+& $L_1$ is the length of the top rod(m)\\
+& $\theta_1$ is the angle of the top rod(\si[per-mode=symbol] {\degree})\\
+\hline
+Sources& https://www.myphysicslab.com/pendulum/double-pendulum-en.html \newline\cite{Double_Pendulum}\\
+\hline
+Ref.\ By & ~\ddref{positionx2}, ~\dref{velocityx1} \\
+\hline
+\end{tabular}
+\end{minipage}\\
+
+\noindent
+\begin{minipage}{\textwidth}
+\renewcommand*{\arraystretch}{1.5}
+\begin{tabular}{| p{\colAwidth} | p{\colBwidth}|}
+\hline
+\rowcolor[gray]{0.9}
+Number& DD\refstepcounter{datadefnum}\thedatadefnum \label{positiony1}\\
+\hline
+Label& \bf y-component of initial positions of the top pendulum\\
+\hline
+Symbol &$y_1$\\
+\hline
+SI Units & \si{\metre}\\
+\hline
+Equation&\[y_1=-L_1cos\theta_2\]\\
+\hline
+Description & $y_1$ is the vertical position of the top pendulum(m)\\
+& $L_1$ is the length of the top rod(m)\\
+& $\theta_1$ is the angle of the top rod(\si[per-mode=symbol] {\degree})\\
+\hline
+Sources& https://www.myphysicslab.com/pendulum/double-pendulum-en.html\\
+\hline
+Ref.\ By & ~\ddref{positiony2}, ~\dref{velocityy2}\\
+\hline
+\end{tabular}
+\end{minipage}\\
+
+\noindent
+\begin{minipage}{\textwidth}
+\renewcommand*{\arraystretch}{1.5}
+\begin{tabular}{| p{\colAwidth} | p{\colBwidth}|}
+\hline
+\rowcolor[gray]{0.9}
+Number& DD\refstepcounter{datadefnum}\thedatadefnum \label{positionx2}\\
+\hline
+Label& \bf x-component of initial positions of the bottom mass\\
+\hline
+Symbol &$x_2$\\
+\hline
+SI Units & \si{\metre}\\
+\hline
+Equation&\[x_2=x_1+L_2sin\theta_2\]\\
+\hline
+Description & $x_2$ is the horizontal position of the bottom pendulum(m)\\
+& $L_2$ is the length of the bottom rod(m)\\
+& $\theta_2$ is the angle of the botom rod(\si[per-mode=symbol] {\degree})\\
+& $x_1$ is the horizontal position of the top pendulum(m)\\
+\hline
+Sources& https://www.myphysicslab.com/pendulum/double-pendulum-en.html\\
+\hline
+Ref.\ By & ~\dref{velocityx2} \\
+\hline
+\end{tabular}
+\end{minipage}\\
+
+\noindent
+\begin{minipage}{\textwidth}
+\renewcommand*{\arraystretch}{1.5}
+\begin{tabular}{| p{\colAwidth} | p{\colBwidth}|}
+\hline
+\rowcolor[gray]{0.9}
+Number& DD\refstepcounter{datadefnum}\thedatadefnum \label{positiony2}\\
+\hline
+Label& \bf y-component of initial positions of the bottom pendulum\\
+\hline
+Symbol &$y_2$\\
+\hline
+SI Units & \si{\metre}\\
+\hline
+Equation&\[y_2=y_1-L_2cos\theta_2\]\\
+\hline
+Description & $y_2$ is the vertical position of the bottom pendulum(m)\\
+& $L_2$ is the length of the bottom rod(m)\\
+& $\theta_2$ is the angle of the botom rod(\si[per-mode=symbol] {\degree})\\
+& $y_1$ is the vertical position of the top pendulum(m)\\
+\hline
+Sources& https://www.myphysicslab.com/pendulum/double-pendulum-en.html\\
+\hline
+Ref.\ By & ~\dref{velocityy2} \\
+\hline
+\end{tabular}
+\end{minipage}\\
+
 
 
 \subsubsection{Instance Models} \label{sec_instanceModel}
@@ -1087,14 +1005,14 @@ The code is able to be run in different environments.
 \ddref{positiony1}         & & & & & & & \\ \hline
 \ddref{positionx2}    & & & & & & & \\ \hline
 \ddref{positiony2}     & & & & & & & \\ \hline
-\ddref{velocityx1}       & & & & & & & \\ \hline
-\ddref{velocityy1}        & & & & & & & \\ \hline
-\ddref{velocityx2}        & & & & & & & \\ \hline
-\ddref{velocityy2}        & & & & & & & \\ \hline
+\dref{velocityx1}       & & & & & & & \\ \hline
+\dref{velocityy1}        & & & & & & & \\ \hline
+\dref{velocityx2}        & & & & & & & \\ \hline
+\dref{velocityy2}        & & & & & & & \\ \hline
 \ddref{accelerationx1}        & & & & & & & \\ \hline
-\ddref{accelerationy1}        & & & & & & & \\ \hline
-\ddref{accelerationx2}        & & & & & & & \\ \hline
-\ddref{accelerationy2}        & & & & & & & \\ \hline
+\dref{accelerationy1}        & & & & & & & \\ \hline
+\dref{accelerationx2}        & & & & & & & \\ \hline
+\dref{accelerationy2}        & & & & & & & \\ \hline
 \iref{force1}         & X&X &X & &X & & X\\ \hline
 \iref{force2}      & X&X &X & &X & & X\\ \hline
 \iref{angularAcc1}       & X&X &X &X &X & & \\ \hline
@@ -1114,7 +1032,7 @@ The code is able to be run in different environments.
 \small
 \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
 \hline        
-  & \tref{T_Newton} & \tref{T_Velocity} & \tref{T_Acceleration} & \ddref{positionx1} &\ddref{positiony1} & \ddref{positionx2} & \ddref{positiony2} & \ddref{velocityx1} & \ddref{velocityy1} & \ddref{velocityx2} & \ddref{velocityy2} & \ddref{accelerationx1} & \ddref{accelerationy1} & \ddref{accelerationx2} & \ddref{accelerationy2} & \iref{force1} & \iref{force2} & \iref{angularAcc1} & \lcref{LC_airdrag} & \lcref{LC_units} \\
+  & \tref{T_Newton} & \tref{T_Velocity} & \tref{T_Acceleration} & \ddref{positionx1} &\ddref{positiony1} & \ddref{positionx2} & \ddref{positiony2} & \dref{velocityx1} & \dref{velocityy1} & \dref{velocityx2} & \dref{velocityy2} & \dref{accelerationx1} & \dref{accelerationy1} & \dref{accelerationx2} & \ddref{accelerationy2} & \iref{force1} & \iref{force2} & \iref{angularAcc1} & \lcref{LC_airdrag} & \lcref{LC_units} \\
 \hline
 \tref{T_Newton}        &&&&&&&&&&&&&&&&X&X&&&\\ \hline
 \tref{T_Velocity}        &&&&&&&&X&X&X&X&&&&&&&&&\\ \hline
