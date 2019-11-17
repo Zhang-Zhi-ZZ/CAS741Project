@@ -371,7 +371,7 @@ This section focuses on the general equations and laws that Double Pendulum is b
   Source &
            \url{https://www.grc.nasa.gov/www/k-12/airplane/newton.html}\\
   \hline
-  Ref.\ By & ~\iref{force1}, ~\iref{force2}\\
+  Ref.\ By & ~\dref{force1}, ~\dref{force2}\\
   \hline
 \end{tabular}
 \end{minipage}\\
@@ -570,7 +570,7 @@ Description & {$x_1$}'' is the horizontal acceleration of the top pendulum(\si[p
 \hline
 Sources& https://www.myphysicslab.com/pendulum/double-pendulum-en.html\\
 \hline
-Ref.\ By & ~\dref{accelerationx2}, ~\iref{force1}\\
+Ref.\ By & ~\dref{accelerationx2}, ~\dref{force1}\\
 \hline
 \end{tabular}
 \end{minipage}\\
@@ -599,7 +599,7 @@ Description & {$y_1$}'' is the vertical acceleration of the top pendulum(\si[per
 \hline
 Sources& https://www.myphysicslab.com/pendulum/double-pendulum-en.html\\
 \hline
-Ref.\ By & ~\dref{accelerationy2}, ~\iref{force1} \\
+Ref.\ By & ~\dref{accelerationy2}, ~\dref{force1} \\
 \hline
 \end{tabular}
 \end{minipage}\\
@@ -629,7 +629,7 @@ Description & {$x_2$}'' is the horizontal acceleration of the bottom pendulum(\s
 \hline
 Sources& https://www.myphysicslab.com/pendulum/double-pendulum-en.html\\
 \hline
-Ref.\ By & ~\iref{force2}\\
+Ref.\ By & ~\dref{force2}\\
 \hline
 \end{tabular}
 \end{minipage}\\
@@ -659,10 +659,74 @@ Description & {$y_2$}'' is the vertical acceleration of the bottom pendulum(\si[
 \hline
 Sources& https://www.myphysicslab.com/pendulum/double-pendulum-en.html\\
 \hline
-Ref.\ By & ~\iref{force2}\\
+Ref.\ By & ~\dref{force2}\\
 \hline
 \end{tabular}
 \end{minipage}\\
+
+\noindent
+\begin{minipage}{\textwidth}
+\renewcommand*{\arraystretch}{1.5}
+\begin{tabular}{| p{\colAwidth} | p{\colBwidth}|}
+  \hline
+  \rowcolor[gray]{0.9}
+  Number& GD\refstepcounter{defnum}\thedefnum \label{force1}\\
+  \hline
+  Label& \bf calOfForceOnTopPendulum\\
+  \hline
+  Input&$T_1$, $T_2$, $\theta_1$, $\theta_2$,$m_1$, $g$\\
+  \hline
+  Output& $m_1{x_1}''$, $m_1{y_1}''$\\
+  \hline
+  Input Constraints& $\theta_1$,$\theta_2$ $\neq$ 0\\
+  \hline
+  Output Constraints& None\\
+  \hline
+  Equation &\[m_1{x_1}''=-T_1sin\theta_1+T_2sin\theta_2\]\\
+  &\[m_1{y_1}''=T_1cos\theta_1-T_2cos\theta_2-m_1g\]\\
+  \hline
+  Description& $m_1{x_1}''$ is the horizontal net force on the top pendulum(N)\\
+  & $m_1{y_1}''$ is the veritical net force on the top pendulum(N)\\
+  \hline
+  Sources& https://www.myphysicslab.com/pendulum/double-pendulum-en.html \\
+  \hline
+  Ref.\ By & ~\tref{T_Newton}\\
+  \hline
+\end{tabular}
+\end{minipage}\\
+
+
+\noindent
+\begin{minipage}{\textwidth}
+\renewcommand*{\arraystretch}{1.5}
+\begin{tabular}{| p{\colAwidth} | p{\colBwidth}|}
+  \hline
+  \rowcolor[gray]{0.9}
+  Number& GD\refstepcounter{defnum}\thedefnum \label{force2}\\
+  \hline
+  Label& \bf calOfForceOnBottomPendulum\\
+  \hline
+  Input&$T_2$, $\theta_2$,$m_2$, $g$\\
+  \hline
+  Output& $m_2{x_2}''$, $m_2{y_2}''$\\
+  \hline
+  Input Constraints& $\theta_2$ $\neq$ 0\\
+  \hline
+  Output Constraints& None\\
+  \hline
+  Equation &\[m_2{x_2}''=-T_2sin\theta_2\]\\
+  &\[m_2{y_2}''=T_2cos\theta_2-m_2g\]\\
+  \hline
+  Description& $m_2{x_2}''$ is the horizontal net force on the bottom pendulum(N)\\
+  & $m_2{y_2}''$ is the veritical net force on the bottom pendulum(N)\\
+  \hline
+  Sources& https://www.myphysicslab.com/pendulum/double-pendulum-en.html \\
+  \hline
+  Ref.\ By & ~\tref{T_Newton}\\
+  \hline
+\end{tabular}
+\end{minipage}\\
+
 
 
 \subsubsection{Data Definitions}\label{sec_dataDef}
@@ -784,69 +848,6 @@ Ref.\ By & ~\dref{velocityy2} \\
 This section transforms the problem defined in section~\nameref{sec_specificSysDes} into one which is expressed in mathematical terms. It uses concrete symbols defined in section~\nameref{sec_dataDef} to replace the abstract symbols in the models identified in section~\nameref{sec_tm} and section~\nameref{sec_generalDef}.\\
 
 
-\noindent
-\begin{minipage}{\textwidth}
-\renewcommand*{\arraystretch}{1.5}
-\begin{tabular}{| p{\colAwidth} | p{\colBwidth}|}
-  \hline
-  \rowcolor[gray]{0.9}
-  Number& IM\refstepcounter{instnum}\theinstnum \label{force1}\\
-  \hline
-  Label& \bf calOfForceOnTopPendulum\\
-  \hline
-  Input&$T_1$, $T_2$, $\theta_1$, $\theta_2$,$m_1$, $g$\\
-  \hline
-  Output& $m_1{x_1}''$, $m_1{y_1}''$\\
-  \hline
-  Input Constraints& $\theta_1$,$\theta_2$ $\neq$ 0\\
-  \hline
-  Output Constraints& None\\
-  \hline
-  Equation &\[m_1{x_1}''=-T_1sin\theta_1+T_2sin\theta_2\]\\
-  &\[m_1{y_1}''=T_1cos\theta_1-T_2cos\theta_2-m_1g\]\\
-  \hline
-  Description& $m_1{x_1}''$ is the horizontal net force on the top pendulum(N)\\
-  & $m_1{y_1}''$ is the veritical net force on the top pendulum(N)\\
-  \hline
-  Sources& https://www.myphysicslab.com/pendulum/double-pendulum-en.html \\
-  \hline
-  Ref.\ By & ~\tref{T_Newton}\\
-  \hline
-\end{tabular}
-\end{minipage}\\
-
-
-\noindent
-\begin{minipage}{\textwidth}
-\renewcommand*{\arraystretch}{1.5}
-\begin{tabular}{| p{\colAwidth} | p{\colBwidth}|}
-  \hline
-  \rowcolor[gray]{0.9}
-  Number& IM\refstepcounter{instnum}\theinstnum \label{force2}\\
-  \hline
-  Label& \bf calOfForceOnBottomPendulum\\
-  \hline
-  Input&$T_2$, $\theta_2$,$m_2$, $g$\\
-  \hline
-  Output& $m_2{x_2}''$, $m_2{y_2}''$\\
-  \hline
-  Input Constraints& $\theta_2$ $\neq$ 0\\
-  \hline
-  Output Constraints& None\\
-  \hline
-  Equation &\[m_2{x_2}''=-T_2sin\theta_2\]\\
-  &\[m_2{y_2}''=T_2cos\theta_2-m_2g\]\\
-  \hline
-  Description& $m_2{x_2}''$ is the horizontal net force on the bottom pendulum(N)\\
-  & $m_2{y_2}''$ is the veritical net force on the bottom pendulum(N)\\
-  \hline
-  Sources& https://www.myphysicslab.com/pendulum/double-pendulum-en.html \\
-  \hline
-  Ref.\ By & ~\tref{T_Newton}\\
-  \hline
-\end{tabular}
-\end{minipage}\\
-
 
 
 \noindent
@@ -868,8 +869,12 @@ This section transforms the problem defined in section~\nameref{sec_specificSysD
   Output Constraints& None\\
   \hline
 
-  Equation &\[{\theta_1}''=\frac{-g(2m_1+m_2)sin\theta_1-m_2gsin(\theta_1-2\theta_2)-2sin(\theta_1-\theta_2)m_2({{\theta_2}'}^2L_2+{{\theta_2}'}^2L_1cos(\theta_1-\theta_2)}{L_1(2m_1+m_2-m_2cos(2\theta_1-2\theta_2))}\]\\
-  &\[{\theta_2}''=\frac{2sin(\theta_1-\theta_2)({\theta_1}'L_1(m1+m2)+g(m_1+m_2)cos(\theta_1)+{(\theta_2}')^2L_2m_2cos(\theta_1-\theta_2}{L_2(2m_1+m_2-m_2cos(2\theta_1-2\theta_2))}\]\\
+  Equation &
+  \[{\theta_1}''=\frac{-g(2m_1+m_2)sin\theta_1-m_2gsin(\theta_1-2\theta_2)-2sin(\theta_1-\theta_2)m_2({{\theta_2}'}^2L_2+{{\theta_2}'}^2L_1cos(\theta_1-\theta_2)}{L_1(2m_1+m_2-m_2cos(2\theta_1-2\theta_2))}\]
+
+  \\
+  &\[{\theta_2}''=\frac{2sin(\theta_1-\theta_2)({\theta_1}'L_1(m1+m2)+g(m_1+m_2)cos(\theta_1)+{(\theta_2}')^2L_2m_2cos(\theta_1-\theta_2}{L_2(2m_1+m_2-m_2cos(2\theta_1-2\theta_2))}\]
+  \\
 
   \hline
   Description& $m_2{x_2}''$ is the horizontal net force on the bottom pendulum(N)\\
@@ -877,7 +882,7 @@ This section transforms the problem defined in section~\nameref{sec_specificSysD
   \hline
   Sources& https://www.myphysicslab.com/pendulum/double-pendulum-en.html \\
   \hline
-  Ref.\ By & ~\iref{force1}, ~\ddref{accelerationx1}, ~\ddref{accelerationy1}, ~\ddref{accelerationx2},~\ddref{accelerationy2}\\
+  Ref.\ By & ~\dref{force1}, ~\dref{accelerationx1}, ~\dref{accelerationy1}, ~\dref{accelerationx2},~\dref{accelerationy2}\\
   \hline
 \end{tabular}
 \end{minipage}\\
@@ -1013,8 +1018,8 @@ The code is able to be run in different environments.
 \dref{accelerationy1}        & & & & & & & \\ \hline
 \dref{accelerationx2}        & & & & & & & \\ \hline
 \dref{accelerationy2}        & & & & & & & \\ \hline
-\iref{force1}         & X&X &X & &X & & X\\ \hline
-\iref{force2}      & X&X &X & &X & & X\\ \hline
+\dref{force1}         & X&X &X & &X & & X\\ \hline
+\dref{force2}      & X&X &X & &X & & X\\ \hline
 \iref{angularAcc1}       & X&X &X &X &X & & \\ \hline
 \lcref{LC_airdrag}    & & & & & & & X\\ \hline
 \lcref{LC_units}    & & & & & & & \\ 
@@ -1032,7 +1037,7 @@ The code is able to be run in different environments.
 \small
 \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
 \hline        
-  & \tref{T_Newton} & \tref{T_Velocity} & \tref{T_Acceleration} & \ddref{positionx1} &\ddref{positiony1} & \ddref{positionx2} & \ddref{positiony2} & \dref{velocityx1} & \dref{velocityy1} & \dref{velocityx2} & \dref{velocityy2} & \dref{accelerationx1} & \dref{accelerationy1} & \dref{accelerationx2} & \ddref{accelerationy2} & \iref{force1} & \iref{force2} & \iref{angularAcc1} & \lcref{LC_airdrag} & \lcref{LC_units} \\
+  & \tref{T_Newton} & \tref{T_Velocity} & \tref{T_Acceleration} & \ddref{positionx1} &\ddref{positiony1} & \ddref{positionx2} & \ddref{positiony2} & \dref{velocityx1} & \dref{velocityy1} & \dref{velocityx2} & \dref{velocityy2} & \dref{accelerationx1} & \dref{accelerationy1} & \dref{accelerationx2} & \ddref{accelerationy2} & \dref{force1} & \dref{force2} & \iref{angularAcc1} & \lcref{LC_airdrag} & \lcref{LC_units} \\
 \hline
 \tref{T_Newton}        &&&&&&&&&&&&&&&&X&X&&&\\ \hline
 \tref{T_Velocity}        &&&&&&&&X&X&X&X&&&&&&&&&\\ \hline
@@ -1049,8 +1054,8 @@ The code is able to be run in different environments.
 \dref{accelerationy1}        &&&&&&&&&&&&&&&X&X&&&&\\ \hline
 \dref{accelerationx2}       &&&&&&&&&&&&&&&&&X&&&\\ \hline
 \dref{accelerationy2}       &&&&&&&&&&&&&&&&&X&&&\\ \hline
-\iref{force1}        &X&&&&&&&&&&&&&&&&&&&\\ \hline
-\iref{force2}      &X&&&&&&&&&&&&&&&&&&&\\ \hline
+\dref{force1}        &X&&&&&&&&&&&&&&&&&&&\\ \hline
+\dref{force2}      &X&&&&&&&&&&&&&&&&&&&\\ \hline
 \iref{angularAcc1}       &X&&&&&&&&&&&X&X&X&X&&&&&\\ \hline
 \lcref{LC_airdrag}    &&&&&&&&&&&&&&&&&&&&\\ \hline
 \lcref{LC_units}    &&&&&&&&&&&&&&&&&&&&\\ 
@@ -1066,16 +1071,14 @@ The code is able to be run in different environments.
 \centering
 \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
 \hline
-  & \iref{force1}& \iref{force2}& \iref{angularAcc1}& \rref{R_Inputs}& \rref{R_VarifyInputs} &  \rref{R_Calculate} & \rref{R_Output} & \rref{R_Graphs}\\
+  &\iref{angularAcc1}& \rref{R_Inputs}& \rref{R_VarifyInputs} &  \rref{R_Calculate} & \rref{R_Output} & \rref{R_Graphs}\\
 \hline
-\iref{force1}            &&&&&X&X&&X\\ \hline
-\iref{force2}            &&&&&X&X&&X\\ \hline
-\iref{angularAcc1}         &&&&&X&X&&X\\ \hline
-\rref{R_Inputs}         &X&X&X&&&&&\\ \hline
-\rref{R_VarifyInputs}         &X&X&X&&&&&\\ \hline
-\rref{R_Calculate}     &X&X&X&&&&&\\ \hline
-\rref{R_Output}    &X&X&X&&&&&\\  
-\rref{R_Graphs}    &X&X&X&&&&&\\
+\iref{angularAcc1}         &&&X&X&&X\\ \hline
+\rref{R_Inputs}         &X&&&&&\\ \hline
+\rref{R_VarifyInputs}         &X&&&&&\\ \hline
+\rref{R_Calculate}     &X&&&&&\\ \hline
+\rref{R_Output}    &X&&&&&\\  
+\rref{R_Graphs}    &X&&&&&\\
 \hline
 \end{tabular}
 \caption{Traceability Matrix Showing the Connections Between Requirements and Instance Models}
