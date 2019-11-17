@@ -460,9 +460,14 @@ Ref.\ By & ~\dref{accelerationx1}\\
 \hline
 \end{tabular}
 \end{minipage}\\
-\subsubsection*{Detailed derivation of x-component of velocity:}
-According to \tref{T_Velocity}, we differentiate \ddref{positionx1} to get the x-component of velocity of the top rod. 
-This is also how \dref{velocityx2} is derived.
+\subsubsection*{Detailed derivation of x-component of velocity1:}
+According to \tref{T_Velocity}:
+\[{x_1}'=\frac{dx_1}{dt}\]
+Substitute \ddref{positionx1} in the equation above:
+\[{x_1}'=\frac{d(L_1sin\theta_1)}{dt}\]
+Apply the chain rule, we get the x-component of velocity of the top rod:
+\[{x_1}'={\theta_1}'L_1cos\theta_1\]
+ 
 
 \noindent
 \begin{minipage}{\textwidth}
@@ -492,9 +497,14 @@ Ref.\ By & ~\dref{accelerationy1}\\
 \end{tabular}
 \end{minipage}\\
 
-\subsubsection*{Detailed derivation of y-component of velocity:}
-According to \tref{T_Velocity}, we differentiate \ddref{positiony1} to get the y-component of velocity of the top rod. 
-This is also how \dref{velocityy2} is derived.
+\subsubsection*{Detailed derivation of y-component of velocity1:}
+According to \tref{T_Velocity}:
+\[{y_1}'=\frac{dy_1}{dt}\]
+Substitute \ddref{positiony1} in the equation above:
+\[{y_1}'=\frac{-d(L_1cos\theta_2)}{dt}\]
+Apply the chain rule, we get the y-component of velocity of the top rod:
+\[{y_1}'={\theta_1}'L_1sin\theta_1\]
+ 
 
 \noindent
 \begin{minipage}{\textwidth}
@@ -524,6 +534,13 @@ Ref.\ By & ~\dref{accelerationx2}\\
 \hline
 \end{tabular}
 \end{minipage}\\
+\subsubsection*{Detailed derivation of x-component of velocity2:}
+According to \tref{T_Velocity}:
+\[{x_2}'=\frac{dx_2}{dt}\]
+Substitute \ddref{positionx2} in the equation above:
+\[{x_2}'=\frac{d(x_1+L_2sin\theta_2)}{dt}\]
+Apply the chain rule, we get the x-component of velocity of the bottom rod:
+\[{x_2}'={x_1}'+{\theta_2}'L_2cos\theta_2\]
  
 \noindent
 \begin{minipage}{\textwidth}
@@ -553,6 +570,15 @@ Ref.\ By & ~\dref{accelerationy2}\\
 \hline
 \end{tabular}
 \end{minipage}\\
+\subsubsection*{Detailed derivation of y-component of velocity2:}
+According to \tref{T_Velocity}:
+\[{y_2}'=\frac{dy_2}{dt}\]
+Substitute \ddref{positiony2} in the equation above:
+\[{y_2}'=\frac{-d(y_1-L_2cos\theta_2)}{dt}\]
+Apply the chain rule, we get the y-component of velocity of the top rod:
+\[{y_2}'={y_1}'+{\theta_2}'L_2sin\theta_2\]
+ 
+
 
 \noindent
 \begin{minipage}{\textwidth}
@@ -583,9 +609,14 @@ Ref.\ By & ~\dref{accelerationx2}, ~\dref{force1}\\
 \end{tabular}
 \end{minipage}\\
 
-\subsubsection*{Detailed derivation of x-component of acceleration:}
-According to \tref{T_Acceleration}, we differentiate \ddref{velocityx1} to get the x-component of acceleration of the top rod. 
-This is also how \dref{accelerationx2} is derived.
+\subsubsection*{Detailed derivation of x-component of acceleration1:}
+According to \tref{T_Acceleration}:
+\[{x_1}''=\frac{d{x_1}'}{dt}\]
+Substitute \ddref{velocityx1} in the equation above:
+\[{x_1}''=\frac{d({\theta_1}'L_1cos\theta_1)}{dt}\]
+Apply the chain rule, we get the x-component of acceleration of the top rod:
+\[{x_1}''=-{{\theta_1}'}^2L_1sin\theta_1+{\theta_1}''L_1cos\theta_1\]
+ 
 
 \noindent
 \begin{minipage}{\textwidth}
@@ -615,9 +646,14 @@ Ref.\ By & ~\dref{accelerationy2}, ~\dref{force1} \\
 \hline
 \end{tabular}
 \end{minipage}\\
-\subsubsection*{Detailed derivation of y-component of acceleration:}
-According to \tref{T_Acceleration}, we differentiate \ddref{velocityy1} to get the y-component of acceleration of the top rod. 
-This is also how \dref{accelerationy2} is derived.
+
+\subsubsection*{Detailed derivation of y-component of acceleration1:}
+According to \tref{T_Acceleration}:
+\[{y_1}''=\frac{d{y_1}'}{dt}\]
+Substitute \ddref{velocityy1} in the equation above:
+\[{y_1}''=\frac{d({\theta_1}'L_1sin\theta_1)}{dt}\]
+Apply the chain rule, we get the y-component of acceleration of the top rod:
+\[{y_1}''={{\theta_1}'}^2L_1cos\theta_1+{\theta_1}''L_1sin\theta_1\]
 
 
 \noindent
@@ -650,6 +686,14 @@ Ref.\ By & ~\dref{force2}\\
 \end{tabular}
 \end{minipage}\\
 
+\subsubsection*{Detailed derivation of x-component of acceleration2:}
+According to \tref{T_Acceleration}:
+\[{x_2}''=\frac{d{x_2}'}{dt}\]
+Substitute \ddref{velocityx2} in the equation above:
+\[{x_2}''=\frac{d({x_1}'+{\theta_2}'L_2cos\theta_2)}{dt}\]
+Apply the chain rule, we get the x-component of acceleration of the bottom rod:
+\[{x_2}''={x_1}''-{{\theta_2}'}^2L_2sin\theta_2+{\theta_2}''L_2cos\theta_2\]
+
 \noindent
 \begin{minipage}{\textwidth}
 \renewcommand*{\arraystretch}{1.5}
@@ -680,6 +724,13 @@ Ref.\ By & ~\dref{force2}\\
 \end{tabular}
 \end{minipage}\\
 
+\subsubsection*{Detailed derivation of y-component of acceleration2:}
+According to \tref{T_Acceleration}:
+\[{y_2}''=\frac{d{y_2}'}{dt}\]
+Substitute \ddref{velocityy2} in the equation above:
+\[{y_1}''=\frac{d({y_1}'+{\theta_2}'L_2sin\theta_2)}{dt}\]
+Apply the chain rule, we get the y-component of acceleration of the bottom rod:
+\[{y_2}''={y_1}''+{{\theta_2}'}^2L_2cos\theta_2+{\theta_2}''L_2sin\theta_2\]
 \noindent
 \begin{minipage}{\textwidth}
 \renewcommand*{\arraystretch}{1.5}
