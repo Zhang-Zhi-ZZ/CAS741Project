@@ -460,7 +460,9 @@ Ref.\ By & ~\dref{accelerationx1}\\
 \hline
 \end{tabular}
 \end{minipage}\\
-
+\subsubsection*{Detailed derivation of x-component of velocity:}
+According to \tref{T_Velocity}, we differentiate \ddref{positionx1} to get the x-component of velocity of the top rod. 
+This is also how \dref{velocityx2} is derived.
 
 \noindent
 \begin{minipage}{\textwidth}
@@ -490,6 +492,10 @@ Ref.\ By & ~\dref{accelerationy1}\\
 \end{tabular}
 \end{minipage}\\
 
+\subsubsection*{Detailed derivation of y-component of velocity:}
+According to \tref{T_Velocity}, we differentiate \ddref{positiony1} to get the y-component of velocity of the top rod. 
+This is also how \dref{velocityy2} is derived.
+
 \noindent
 \begin{minipage}{\textwidth}
 \renewcommand*{\arraystretch}{1.5}
@@ -518,7 +524,7 @@ Ref.\ By & ~\dref{accelerationx2}\\
 \hline
 \end{tabular}
 \end{minipage}\\
-
+ 
 \noindent
 \begin{minipage}{\textwidth}
 \renewcommand*{\arraystretch}{1.5}
@@ -577,6 +583,10 @@ Ref.\ By & ~\dref{accelerationx2}, ~\dref{force1}\\
 \end{tabular}
 \end{minipage}\\
 
+\subsubsection*{Detailed derivation of x-component of acceleration:}
+According to \tref{T_Acceleration}, we differentiate \ddref{velocityx1} to get the x-component of acceleration of the top rod. 
+This is also how \dref{accelerationx2} is derived.
+
 \noindent
 \begin{minipage}{\textwidth}
 \renewcommand*{\arraystretch}{1.5}
@@ -605,6 +615,10 @@ Ref.\ By & ~\dref{accelerationy2}, ~\dref{force1} \\
 \hline
 \end{tabular}
 \end{minipage}\\
+\subsubsection*{Detailed derivation of y-component of acceleration:}
+According to \tref{T_Acceleration}, we differentiate \ddref{velocityy1} to get the y-component of acceleration of the top rod. 
+This is also how \dref{accelerationy2} is derived.
+
 
 \noindent
 \begin{minipage}{\textwidth}
@@ -696,6 +710,26 @@ Ref.\ By & ~\dref{force2}\\
   \hline
 \end{tabular}
 \end{minipage}\\
+\newpage
+\subsubsection*{Detailed derivation of force on top mass:}
+We treat the two pendulum masses as point particles. Begin by drawing the free body diagram for the top mass and writing an expression for the net force acting on it. 
+\begin{figure}[h!]
+\begin{center}
+ \includegraphics[width=0.2\textwidth]{force1}
+\caption{The free body diagram of the top mass}
+\label{Fig_force1} 
+\end{center}
+\end{figure}
+\newline
+Define these variables:\\
+$T$ = tension in the rod\\
+$m$ = mass of pendulum\\
+$g$ = gravitational constant
+\newline
+The forces on the top mass are upper mass are the tension in the upper rod $T_1$, the tension in the lowed rod $T_2$, and the gravity -$m_1g$. Using Newton's law $F = ma$\tref{T_Newton}, the net force on the top mass in x axis is:\\
+\[m_1{x_1}''=-T_1sin\theta_1+T_2sin\theta_2\]\\
+ and the net force on the top mass in y axis is:\\
+ \[m_1{y_1}''=T_1cos\theta_1-T_2cos\theta_2-m_1g\]. 
 
 
 \noindent
@@ -728,8 +762,21 @@ Ref.\ By & ~\dref{force2}\\
   \hline
 \end{tabular}
 \end{minipage}\\
-
-
+\subsubsection*{Detailed derivation of force on bottom mass:}
+For the botton pendulum, its free body diagram is:
+\begin{figure}[h!]
+\begin{center}
+ \includegraphics[width=0.2\textwidth]{force2}
+\caption{The free body diagram of the bottom mass}
+\label{Fig_force2} 
+\end{center}
+\end{figure}
+\newline
+The forces on the bottom pendulum are the tension in the bottom rod $T_2$, and the gravity -$m_2g$.
+So the net force on the bottom mass in x-axis is:
+\[m_2{x_2}''=-T_2sin\theta_2\]\\
+and the net force on the bottom mass in y-axis is:
+\[m_2{y_2}''=T_2cos\theta_2-m_2g\] 
 
 \subsubsection{Data Definitions}\label{sec_dataDef}
 This section collects and defines all the data needed to build the instance models. \\
