@@ -123,6 +123,10 @@ The relevant documentations are:
     \item Unit VnV Plan
 \end{itemize}
 
+\wss{You should cite these documents, including the GitHub url for their
+  location.  You should also mention all of the documents that you will write
+  for this course, even though they are not all complete.}
+
 \section{Plan}\label{sec_Plan}
 	
 
@@ -132,17 +136,22 @@ The relevant documentations are:
     \item Zhi Zhang
 \end{itemize}
 
+\wss{You should also list your colleagues in the class, because they will be
+  helping you with the VnV efforts.}
 
 \subsection{SRS Verification Plan}
 
 The SRS verification plan will include feedback from author's professor and
-classmates, mainly the domain expert.
-
+classmates, mainly the domain expert.  \wss{The review would be more useful if
+  it was more structured.  Maybe you have some ideas for a way to structure the
+  review?  Maybe there can be a task-based review?}
 
 \subsection{Design Verification Plan}
 
 The design verification plan will include feedback from author's professor and
 classmates, mainly the domain expert.
+\wss{As for the SRS, you can flesh this out in greater detail.  Peter has a nice
+  design verification plan in his document.}
 
 \wss{Plans for design verification}
 
@@ -151,9 +160,12 @@ classmates, mainly the domain expert.
 The implementation verification plan will include the followings:
 \begin{itemize}
     \item Code walkthroughs: both the developer and the domain expert will
-inspect the code to ensure all the requirements of the SRS are met.
+inspect the code to ensure all the requirements of the SRS are met. \wss{How is
+  this going to be done?  How will the walkthrough be structured?  What
+  reference are you going to follow?}
     \item Unit testing: all modules are to be unit tested to ensure correctness,
-more details of unit testing can be found in the Unit Testing Plan.
+more details of unit testing can be found in the Unit Testing Plan. \wss{What
+  technology will you use for unit testing?}
     \item Dynamic testing: the software will be executed and all its functions
 will be tested mannually by test team.
 \end{itemize}
@@ -161,14 +173,16 @@ will be tested mannually by test team.
 
 \subsection{Software Validation Plan}
 
-N/A
+N/A \wss{I agree, but you should say why it is N/A.}
 
 
 \section{System Test Description}\label{sec_sysTest}
 	
 \subsection{Tests for Functional Requirements}
 
-There are five functional requirements described in section 5.1 of the SRS.
+There are five functional requirements described in section 5.1 \wss{You can
+  cross-reference between documents in \LaTeX} of the SRS.  \wss{Copying the
+  requirements here is a maintenance nightmare.}
 
 \noindent \begin{itemize}
 
@@ -221,6 +235,9 @@ next five subsections.
 The above table is the data constraints table from SRS. The test in this section
 covers requirements R.\ref{R_Inputs} and R.\ref{R_VarifyInputs}.
 
+\wss{Why repeat this table from the SRS here?  Also, the table is wider than it
+  has to be.}
+
 \paragraph{Invalid Inputs}
 
 \begin{enumerate}
@@ -240,12 +257,15 @@ $\theta_1$ = 10
 $\theta_2$ = 10
 $g$ = 9.8
 
-Output: An error message of "Please input positive value for the mass".
+Output: An error message of "Please input positive value for the
+mass". \wss{Quotes are done using ``quote''}
 
 Test Case Derivation: Check if the error message pops up. 
 
 How test will be performed: Manually input the above the Input data to the
-software by test team.
+software by test team. \wss{No, this test should be automated.  Rather than
+  waiting for an error message, you should have unit tests that verify that the
+  correct exception is raised.}
 
 \item{Non-positive Length of Rods}  
 
@@ -261,9 +281,12 @@ $L_2$ = 0
 $\theta_1$ = 10 
 $\theta_2$ = 10
 $g$ = 9.8
-          
-Output: An error message of "Please input positive value for the the length of
-rods".
+
+\wss{You could use tables to make this document less repetitive.  Define the
+  base test case and then give the delta to define the other test cases.}
+
+Output: An error message of "Please input positive value for the the \wss{proof
+  read} length of rods".
 
 Test Case Derivation: Check if the error message pops up. 
 
@@ -327,7 +350,10 @@ Input/Condition: Press Start button
 Output/Result: An output file created 
           
 How test will be performed: Test team will go to the directory of Double
-Pendulum to check the existence of the output file.
+Pendulum to check the existence of the output file. \wss{This isn't wrong, but
+  it isn't a very necessary test.  You need a test to verify that the output is
+  correct.  That test implicitly includes this test, so you don't really need to
+  separate this out.}
           
 \item{Graph Generated} 
 
@@ -342,7 +368,8 @@ Output/Result: Graphs of $\theta_1$ and $\theta_2$ displayed on the screen of
 the software
           
 How test will be performed: Test team will manually press the Graph button and
-check if the graph is displayed
+check if the graph is displayed \wss{Aren't you also checking to see if the
+  graph is correct?}
 
 \item{Correct Output}  
 
@@ -356,10 +383,28 @@ myPhysicsLab.com~\cite{Double_Pendulum} with the same inputs.
 Output/Result: Check if the graphs match.
           
 How test will be performed: Test team will manually input the same data into
-myPhysicsLab.com~\cite{Double_Pendulum} and compare the graphs.
+myPhysicsLab.com~\cite{Double_Pendulum} and compare the graphs. 
 
 \end{enumerate}
 
+\wss{You are missing the most important tests.  You want tests that the output
+  is correct.  Not in terms of the graphs (although you want that too), but in
+  terms of the output calculations.  The calculations of theta over time.  You
+  need to say where you are going to get the ``correct'' solution and how you
+  are going to compare it.  A good starting point would be to compare a sequence
+  of outputs generated over the same times steps between your program and
+  another program that does the same thing.  You can then compare the relative
+  error between each value at each time step.  You can then summarize the entire
+  test with a reasonable norm, like the infinity norm, or the Euclidean norm.
+  You should have a variety of tests with more and more extreme inputs.}
+
+\wss{It would be great to see a comparison between your output and the output of
+  a validated solver.  I haven't asked him, but I'm confident that Bo will help
+  you to run Dr.\ Nedialkov's validated ODE solver.  It would be great to see
+  how quickly your answer gets outside of the correct answer.  I think it will
+  happen quicker than you think.  :-)}
+
+  
 \subsection{Tests for Nonfunctional Requirements}
 
 There are five nonfunctional requirements described in section 6.1 of SRS.
@@ -414,7 +459,8 @@ Input/Condition: Existing Double Pendulum software
 Output/Result: Update Double Pendulum software
           
 How test will be performed: Test team will try to add new features to the
-software or modify some parts of the software.
+software or modify some parts of the software. \wss{You need to be more
+  specific.  How would someone actually do this test?}
 
 \subsubsection{Re-usability}\label{ReuseTest}
 The re-usability test covers the NFR~\ref{NFR_Reusable}. 
@@ -429,7 +475,10 @@ Input/Condition: Existing Double Pendulum system
 Output/Result: N/A
           
 How test will be performed: Test team will perform code walk through to ensure
-that all codes are modularized.
+that all codes are modularized. \wss{This isn't a test, but it would be a good
+  target for your code walkthrough exercise.  You need to flesh out the details
+  though. What would this walkthrough look like.  How is modularity assessed?
+  Also it is modularity that is being measured, not technically reusability.}
 
 \subsubsection{Portability} \label{PortTest}
 The portability test covers the NFR~\ref{NFR_Portable}.
@@ -462,6 +511,9 @@ Output/Result: The software performs all functions
 How test will be performed: The test will be performed by test team manually.
 
 \end{enumerate}
+
+\wss{These tests are also not specific enough.  A simpler approach would be to
+  run your regression tests on both platforms and report the results.}
 
 \subsection{Traceability Between Test Cases and Requirements}
 
@@ -497,7 +549,9 @@ How test will be performed: The test will be performed by test team manually.
   maximum mark in this course, you'll need to do more than just implement your
   project.  One place where you could add some extra challenge to the project is
   to consider assessing usability.  I'm open to discussion if there is something
-  else you would like to add instead.}
+  else you would like to add instead.  Another idea was mentioned above - the
+  idea of comparing to a validated ODE solver.  Other interesting options would
+  be to use the method of manufactured solutions for verification.}
 
 \newpage
 
