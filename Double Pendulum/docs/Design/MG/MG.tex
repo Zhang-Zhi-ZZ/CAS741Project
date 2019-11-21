@@ -160,7 +160,10 @@ change.
   hardware on which the software is running.
 \item[\refstepcounter{acnum} \actheacnum \label{acInput}:] The format of the
   initial input data.
-\item ...
+\item[\refstepcounter{acnum} \actheacnum \label{acInputParam}:] The format of the input parameters.
+\item[\refstepcounter{acnum} \actheacnum \label{acConstraints}:] The constraints on the input parameters. 
+\item[\refstepcounter{acnum} \actheacnum \label{acOutput}:] The format of the final output data. 
+\item[\refstepcounter{acnum} \actheacnum \label{acODE}:] The algorithm used for the ODE solver. 
 \end{description}
 
 \subsection{Unlikely Changes} \label{SecUchange}
@@ -175,7 +178,10 @@ decisions will be changed.
 \begin{description}
 \item[\refstepcounter{ucnum} \uctheucnum \label{ucIO}:] Input/Output devices
   (Input: File and/or Keyboard, Output: File, Memory, and/or Screen).
-\item ...
+\item[\refstepcounter{ucnum} \uctheucnum \label{ucInput}:] There will always be a source of input data external to the software. 
+\item[\refstepcounter{ucnum} \uctheucnum \label{ucOutput}:] Output data are displayed to the output device. 
+\item[\refstepcounter{ucnum} \uctheucnum \label{ucGoal}:] The goal of the system is to calculate angular position of two masses. 
+\item[\refstepcounter{ucnum} \uctheucnum \label{ucODE}:] The ODEs for angular position can be defined using parameters defined in the input parameters module. 
 \end{description}
 
 \section{Module Hierarchy} \label{SecMH}
@@ -187,15 +193,14 @@ actually be implemented.
 
 \begin{description}
 \item [\refstepcounter{mnum} \mthemnum \label{mHH}:] Hardware-Hiding Module
-\item [\refstepcounter{mnum} \mthemnum \label{mUI}:] User Input Module
-\item [\refstepcounter{mnum} \mthemnum \label{mAV}:] Angular Velocity Module
-\item [\refstepcounter{mnum} \mthemnum \label{mAA}:] Angular Acceleration Module
-\item [\refstepcounter{mnum} \mthemnum \label{mRK}:] Runge Kutta Module
-\item [\refstepcounter{mnum} \mthemnum \label{mO}:] Output Module
-\item [\refstepcounter{mnum} \mthemnum \label{mID}:] Interval Data Structure Module
-\item [\refstepcounter{mnum} \mthemnum \label{mVD}:] Equation Data Structure Module
-\item [\refstepcounter{mnum} \mthemnum \label{mOD}:] Output Data Stracture Module
-
+\item [\refstepcounter{mnum} \mthemnum \label{mIP}:] Input Parameters Module
+\item [\refstepcounter{mnum} \mthemnum \label{mOF}:] Output Format Module
+\item [\refstepcounter{mnum} \mthemnum \label{mVE}:] Velocity Equations Module
+\item [\refstepcounter{mnum} \mthemnum \label{mPO}:] Position ODEs Module
+\item [\refstepcounter{mnum} \mthemnum \label{mC}:] Control Module
+\item [\refstepcounter{mnum} \mthemnum \label{mSDS}:] Sequence Data Structure Module
+\item [\refstepcounter{mnum} \mthemnum \label{mODE}:] ODE Solver Module
+\item [\refstepcounter{mnum} \mthemnum \label{mP}:] Plotting Module
 
 
 \end{description}
@@ -212,18 +217,18 @@ actually be implemented.
 \midrule
 
 \multirow{7}{0.3\textwidth}{Behaviour-Hiding Module} 
-& User Input Module\\
-& Angular Velocity Module\\
-& Angular Acceleration Module\\
-& Runge Kutta Module\\
-& Output Module\\
+& Input Parameters Module\\
+& Output Format Module\\
+& Velocity Equations Module\\
+& Position ODEs Module\\
+& Control Module\\
 
 \midrule
 
 \multirow{3}{0.3\textwidth}{Software Decision Module} 
-& Interval Data Structure Module\\
-& Equation Data Structure Module\\
-& Output Data Stracture Module\\
+& Sequence Data Structure Module\\
+& ODE Solver Module\\
+& Plotting Module\\
 \bottomrule
 
 \end{tabular}
@@ -237,14 +242,6 @@ The design of the system is intended to satisfy the requirements developed in
 the SRS. In this stage, the system is decomposed into modules. The connection
 between requirements and modules is listed in Table \ref{TblRT}.
 
-\wss{The intention of this section is to document decisions that are made
-  ``between'' the requirements and the design.  To satisfy some requirements,
-  design decisions need to be made.  Rather than make these decisions implicit,
-  they are explicitly recorded here.  For instance, if a program has security
-  requirements, a specific design decision may be made to satisfy those
-  requirements with a password.  In scientific examples, the choice of algorithm
-could potentially go here, if that is a decision that is exposed by the
-interface.}
 
 \section{Module Decomposition} \label{SecMD}
 
@@ -285,16 +282,45 @@ to be implemented.
 \item[Implemented By:] --
 \end{description}
 
-\subsubsection{Input Format Module (\mref{mInput})}
+\subsubsection{Input Parameters Module (\mref{mIP})}
 
 \begin{description}
 \item[Secrets:]The format and structure of the input data.
-\item[Services:]Converts the input data into the data structure used by the
-  input parameters module.
-\item[Implemented By:] [Your Program Name Here]
+\item[Services:]Gets input from user, stores input and verifies that the input parameters comply with the physical constraints.
+\item[Implemented By:] Double Pendulum
 \end{description}
 
-\subsubsection{Etc.}
+\subsubsection{Output Format Module (\mref{mOF})}
+
+\begin{description}
+\item[Secrets:]The format and structure of the output data.
+\item[Services:]Outputs the results of the calculations, including the input parameters, angular positions of two masses. 
+\item[Implemented By:] Double Pendulum
+\end{description}
+
+\subsubsection{Velocity Equations Module (\mref{mVE})}
+
+\begin{description}
+\item[Secrets:]The equations for solving for the velocity using the input parameters. 
+\item[Services:]Defines the velocity equations using the parameters in the input parameters module. 
+\item[Implemented By:] Double Pendulum
+\end{description}
+
+\subsubsection{Position ODEs Module (\mref{mPO})}
+
+\begin{description}
+\item[Secrets:]The ODEs for solving the angular positions, using the velocity equation parameters. 
+\item[Services:]Defines the ODEs using the equations in velocity equations module. 
+\item[Implemented By:] Double Pendulum
+\end{description}
+
+\subsubsection{Control Module (\mref{mC})}
+
+\begin{description}
+\item[Secrets:]The algorithm for coordinating the running of the program.
+\item[Services:]Provides the main program.
+\item[Implemented By:] Double Pendulum
+\end{description} 
 
 
 \subsection{Software Decision Module}
@@ -310,7 +336,30 @@ to be implemented.
 \item[Implemented By:] --
 \end{description}
 
-\subsubsection{Etc.}
+\subsubsection{Sequence Data Structure Module (\mref{mSDS})}
+
+\begin{description}
+\item[Secrets:]The data structure for a sequence data type. 
+\item[Services:]Provides array manipulation, including building an array, accessing a specific entry, slicing an array, etc.  
+\item[Implemented By:] Matlab
+\end{description} 
+
+\subsubsection{ODE Solver Module (\mref{mODE})}
+
+\begin{description}
+\item[Secrets:]The algorithm to solve a system of first order ODEs initial value problem from a given starting time until the given event functions shows termination. 
+\item[Services:]Solves an ODE using the governing equation, initial conditions, event function and numerical parameters. 
+\item[Implemented By:] Matlab
+\end{description} 
+
+\subsubsection{Plotting Module (\mref{mP})}
+
+\begin{description}
+\item[Secrets:]The data structures and algorithms for plotting data graphically. 
+\item[Services:]Provides a plot function. 
+\item[Implemented By:] Matlab
+\end{description} 
+
 
 \section{Traceability Matrix} \label{SecTM}
 
@@ -325,17 +374,11 @@ requirements and between the modules and the anticipated changes.
 \toprule
 \textbf{Req.} & \textbf{Modules}\\
 \midrule
-R1 & \mref{mHH}, \mref{mInput}, \mref{mParams}, \mref{mControl}\\
-R2 & \mref{mInput}, \mref{mParams}\\
-R3 & \mref{mVerify}\\
-R4 & \mref{mOutput}, \mref{mControl}\\
-R5 & \mref{mOutput}, \mref{mODEs}, \mref{mControl}, \mref{mSeqDS}, \mref{mSolver}, \mref{mPlot}\\
-R6 & \mref{mOutput}, \mref{mODEs}, \mref{mControl}, \mref{mSeqDS}, \mref{mSolver}, \mref{mPlot}\\
-R7 & \mref{mOutput}, \mref{mEnergy}, \mref{mControl}, \mref{mSeqDS}, \mref{mPlot}\\
-R8 & \mref{mOutput}, \mref{mEnergy}, \mref{mControl}, \mref{mSeqDS}, \mref{mPlot}\\
-R9 & \mref{mVerifyOut}\\
-R10 & \mref{mOutput}, \mref{mODEs}, \mref{mControl}\\
-R11 & \mref{mOutput}, \mref{mODEs}, \mref{mEnergy}, \mref{mControl}\\
+R1 & \mref{mHH}, \mref{mIP},\mref{mC}\\
+R2 & \mref{mIP}\\
+R3 & \mref{mVE}, \mref{mPO}, \mref{mC},\mref{mODE} \\
+R4 & \mref{mOF}, \mref{mC}\\
+R5 & \mref{mSDS}, \mref{mC}, \mref{mP}\\ 
 \bottomrule
 \end{tabular}
 \caption{Trace Between Requirements and Modules}
@@ -349,17 +392,11 @@ R11 & \mref{mOutput}, \mref{mODEs}, \mref{mEnergy}, \mref{mControl}\\
 \textbf{AC} & \textbf{Modules}\\
 \midrule
 \acref{acHardware} & \mref{mHH}\\
-\acref{acInput} & \mref{mInput}\\
-\acref{acParams} & \mref{mParams}\\
-\acref{acVerify} & \mref{mVerify}\\
-\acref{acOutput} & \mref{mOutput}\\
-\acref{acVerifyOut} & \mref{mVerifyOut}\\
-\acref{acODEs} & \mref{mODEs}\\
-\acref{acEnergy} & \mref{mEnergy}\\
-\acref{acControl} & \mref{mControl}\\
-\acref{acSeqDS} & \mref{mSeqDS}\\
-\acref{acSolver} & \mref{mSolver}\\
-\acref{acPlot} & \mref{mPlot}\\
+\acref{acInput} & \mref{mIP}\\
+\acref{acInputParam} & \mref{mIP}\\
+\acref{acConstraints} & \mref{mIP}\\
+\acref{acOutput} & \mref{mOF}\\
+\acref{acODE} & \mref{mODE}\\
 \bottomrule
 \end{tabular}
 \caption{Trace Between Anticipated Changes and Modules}
@@ -381,7 +418,7 @@ because they use modules from the lower levels.
 
 \begin{figure}[H]
 \centering
-%\includegraphics[width=0.7\textwidth]{UsesHierarchy.png}
+\includegraphics[width=0.7\textwidth]{UsesHierarchy.png}
 \caption{Use hierarchy among modules}
 \label{FigUH}
 \end{figure}

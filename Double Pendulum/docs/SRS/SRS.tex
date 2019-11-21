@@ -1028,13 +1028,17 @@ is intended to provide a feel for a common scenario.
   \\
   $g$ & $g > 0$ & - & \si[per-mode=symbol] {\newton\per\kilogram} & 10\%
   \\
+  $t$ & $t > 0$ & - & \si[per-mode=symbol] {\second} & 60\%
+  \\
   \bottomrule
 \end{longtable*}
 \end{table}
 
 \subsubsection{Properties of a Correct Solution}\label{sec_corSol}
-Table ~\nameref{TblOutputVar} shows the data constraints on the output variables. The column for physical constraints gives the physical limitations on the range of values that can be taken by the variable.
+There is no data constraints on the output variables. 
 
+\begin{comment}
+Table ~\nameref{TblOutputVar} shows the data constraints on the output variables. The column for physical constraints gives the physical limitations on the range of values that can be taken by the variable.
 \begin{table}[!h]
 \caption{Output Variables} \label{TblOutputVar}
 \renewcommand{\arraystretch}{1.2}
@@ -1047,6 +1051,7 @@ Table ~\nameref{TblOutputVar} shows the data constraints on the output variables
   \bottomrule
 \end{longtable*}
 \end{table}
+\end{comment}
 
 \section{Requirements}\label{sec_req}
 This section provides the functional requirements, the business tasks that the
@@ -1061,9 +1066,9 @@ This section provides the functional requirements, the tasks and behaviors that 
 Input the required values in the software. 
 \item[R\refstepcounter{reqnum}\thereqnum \label{R_VarifyInputs}:]  
 Check the entered input values to ensure that they do not exceed the data constraints mention in section~\nameref{sec_inputDataCons}.
-\item[R\refstepcounter{reqnum}\thereqnum \label{R_Calculate}:] Calculate the equation for the following values: $\theta_1$(t) and $\theta_1$(t).
+\item[R\refstepcounter{reqnum}\thereqnum \label{R_Calculate}:] Calculate and output the position of two masses over the the simulation time. 
 \item[R\refstepcounter{reqnum}\thereqnum \label{R_Output}:] Output the results to a file.
-\item[R\refstepcounter{reqnum}\thereqnum \label{R_Graphs}:] Output graphs of $\theta_1$(t) and $\theta_1$(t).
+\item[R\refstepcounter{reqnum}\thereqnum \label{R_Graphs}:] Output graphs of $\theta_1$(t) and $\theta_1$(t) over the simulation time.
 
 \end{itemize}
 
