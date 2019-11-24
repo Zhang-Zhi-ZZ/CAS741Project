@@ -191,6 +191,10 @@ systems. The symbols are listed in alphabetical order.
   \\
   ${\theta_2}''$ & \si[per-mode=symbol] {\degree\per\square\second} & angular acceleration of the bottom rod
   \\
+  $m_1$ & \si[per-mode=symbol] {\kilogram} & mass of the top mass
+  \\
+  $m_2$ & \si[per-mode=symbol] {\kilogram} & mass of the bottom mass
+  \\
   $L_1$ & \si[per-mode=symbol] {\metre} & length of the top rod
   \\
   $L_2$ & \si[per-mode=symbol] {\metre} & length of the bottom rod
@@ -1063,7 +1067,25 @@ This section provides the functional requirements, the tasks and behaviors that 
 \noindent \begin{itemize}
 
 \item[R\refstepcounter{reqnum}\thereqnum \label{R_Inputs}:] 
-Input the required values in the software. 
+Input the following quantities, which define the initial conditions:
+  \renewcommand{\arraystretch}{1.2}
+%\noindent \begin{tabularx}{1.0\textwidth}{l l X}
+  \noindent \begin{longtable*}{l l p{12cm}} \toprule
+              \textbf{symbol} & \textbf{unit} & \textbf{description}\\
+              \midrule 
+              $m_1$ & \si{\kilogram} & mass of the top mass\\
+              $m_2$ & \si{\kilogram} & mass of the bottom mass\\
+              $L_1$ & \si{\metre} & length of the top rod\\
+              $L_1$ & \si{\metre} & length of the bottom rod\\
+              $\theta_1$ & \si{\degree} & initial angle of the top mass\\
+              $\theta_2$ & \si{\degree} & initial angle of the bottom mass\\
+              $g$ & \si[per-mode=symbol] {\metre\per\square\second} & gravitational constant\\
+              $t$ & \si{\second} & time of the motion\\
+           
+            \bottomrule
+\end{longtable*}
+
+
 \item[R\refstepcounter{reqnum}\thereqnum \label{R_VarifyInputs}:]  
 Check the entered input values to ensure that they do not exceed the data constraints mention in section~\nameref{sec_inputDataCons}.
 \item[R\refstepcounter{reqnum}\thereqnum \label{R_Calculate}:] Calculate and output the position of two masses over the the simulation time. 
