@@ -132,16 +132,18 @@ The following table is taken directly from the Module Guide document for this pr
 \midrule
 
 \multirow{7}{0.3\textwidth}{Behaviour-Hiding Module} 
-& User Input Module\\
-& Angular Acceleration Module\\
-& Runge Kutta Module\\
-& Output Module\\
+& Input Parameters Module\\
+& Output Format Module\\
+& Velocity Equations Module\\
+& Position ODEs Module\\
+& Control Module\\
 
 \midrule
 
 \multirow{3}{0.3\textwidth}{Software Decision Module} 
-& GUI Module\\ 
-& Graph Module\\  
+& Sequence Data Structure Module\\
+& ODE Solver Module\\
+& Plotting Module\\
 \bottomrule
 
 \end{tabular}
@@ -152,6 +154,103 @@ The following table is taken directly from the Module Guide document for this pr
 \newpage
 ~\newpage
 
+\section{MIS of Control Module} \label{CModule} 
+The control module provides the main program. 
+
+\subsection{Module}
+
+main
+
+\subsection{Uses}
+\wss{add later-zz}
+
+\subsection{Syntax}
+
+\subsubsection{Exported Constants}
+
+N/A
+\subsubsection{Exported Access Programs}
+
+\begin{center}
+\begin{tabular}{p{4cm} p{2cm} p{2cm} p{6cm}}
+\hline
+\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+\hline
+main & - & - &  \\
+\end{tabular}
+\end{center}
+
+\subsection{Semantics}
+
+\subsubsection{State Variables}
+N/A
+
+\subsubsection{Environment Variables}
+keyboard: users type in the required data using keyboard
+\wss{I'm not sure if I should include this}
+\subsubsection{Assumptions}
+\begin{itemize}
+  \item Users only input numerical numbers
+\end{itemize}
+
+\subsubsection{Access Routine Semantics}
+
+\noindent main():
+\begin{itemize}
+\item transition: Modify the state of Param module and the environment variables for the Plot and Output modules by following steps: \\
+Get(filenameIn: String) and (filenameOutL string) from user\\
+load_params(filenameIn)\\
+\item output: $out := self$
+\item exception: $exc := m_1 \leq 0 \Rightarrow IN\_NEGATIVE\_MASS$
+\end{itemize}
+
+\noindent GetMass2($m_2$):
+\begin{itemize}
+\item transition: N/A
+\item output: $out := self$
+\item exception: $exc := m_2 \leq 0 \Rightarrow IN\_NEGATIVE\_MASS$
+\end{itemize}
+
+\noindent GetLength1($L_1$):
+\begin{itemize}
+\item transition: N/A
+\item output: $out := self$
+\item exception: $exc := L_1 \leq 0 \Rightarrow IN\_NEGATIVE\_LENGTH$
+\end{itemize}
+
+\noindent GetLength2($L_2$):
+\begin{itemize}
+\item transition: N/A
+\item output: $out := self$
+\item exception: $exc := L_2 \leq 0 \Rightarrow IN\_NEGATIVE\_LENGTH$
+\end{itemize}
+
+\noindent GetAngle1($\theta_1$):
+\begin{itemize}
+\item transition: N/A
+\item output: $out := self$
+\item exception: N/A
+\end{itemize}
+
+\noindent GetAngle2($\theta_2$):
+\begin{itemize}
+\item transition: N/A
+\item output: $out := self$
+\item exception: N/A
+\end{itemize}
+
+
+\noindent GetGravityConstant($g$):
+\begin{itemize}
+\item transition: N/A
+\item output: $out := self$
+\item exception: $exc := g \leq 0 \Rightarrow IN\_NEGATIVE\_GRAVITY$
+\end{itemize}
+
+\subsubsection{Local Functions}
+N/A
+
+\newpage
 
 \section{MIS of User Input Module} \label{UIModule} 
 The user input module is responsible for acquiring data from users. The module verifies whether or not the input data meets the constraints, and output the verified data to the Angular Acceleration Module.
