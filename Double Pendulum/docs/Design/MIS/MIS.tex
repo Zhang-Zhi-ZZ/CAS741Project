@@ -20,6 +20,7 @@
 \usepackage{caption}
 \usepackage{fullpage}
 \usepackage{mathtools}
+\usepackage{comment}
 
 \hypersetup{
 bookmarks=true,     % show bookmarks bar?
@@ -134,8 +135,8 @@ The following table is taken directly from the Module Guide document for this pr
 \multirow{7}{0.3\textwidth}{Behaviour-Hiding Module} 
 & Input Parameters Module\\
 & Output Format Module\\
-& Velocity Equations Module\\
-& Position ODEs Module\\
+& Acceleration Equations Module\\
+& Velocity ODEs Module\\
 & Control Module\\
 
 \midrule
@@ -162,7 +163,7 @@ The control module provides the main program.
 main
 
 \subsection{Uses}
-\wss{add later-zz}
+Param(Section~\ref{IPModule}), Acceleration(Section~\ref{AEModule}), Velocity(Section~\ref{VOModule}), Solver(Section~\ref{ODEModule}), Plot(Section~\ref{PModule}), Output(Section~\ref{OModule})
 
 \subsection{Syntax}
 
@@ -204,16 +205,18 @@ N/A
 \noindent Get(filenameIn: String) and (filenameOut: string) from user\\
 
 \noindent load\_params(filenameIn)\\
-
+\noindent \#\textit{Find angular velocity function} ($\theta_1, \theta_2$)\\
+\noindent ${\theta_1}'$:= \text{solve}(\text{Acceleration\_Top},0.0, 0.0,$t$)\\
+\noindent ${\theta_2}'$:= \text{solve}(\text{Acceleration\_Bottom},0.0, 0.0,$t$)\\
 \noindent \#\textit{Find angular position function} ($\theta_1, \theta_2$)\\
+\noindent $\theta_1$:= \text{solve}(\text{Velocity\_Top},0.0, 0.0,$t$)\\
+\noindent $\theta_2$:= \text{solve}(\text{Velocity\_Bottom},0.0, 0.0,$t$)\\
 
+\noindent \#\textit{Output calculated values to a file and to a plot.}\\
 
-\noindent $\theta_1$:= \text{solve}(\text{ODE\_Position}, 0.0)\\
+\noindent plot($\theta_1$, $\theta_2$)\\
 
-\wss{add later-zz}
-
-
-
+\noindent output(filenameOut, $\theta_1$, $\theta_2$)\\
 
 
 \subsubsection{Local Functions}
@@ -229,8 +232,7 @@ The secrets of this module are the data structure for input parameters, how the 
 Param
 
 \subsection{Uses}
-SpecParam(Section\wss{add later})
-
+N/A
 \subsection{Syntax}
 
 \subsubsection{Exported Constants}
@@ -361,17 +363,8 @@ with a '\#' symbol.
 \begin{enumerate}
 \item Read data sequentially from inputFile to populate the state variables from
   R1 ($m_1$ to $\mathit{t}$).
-\item Calculate the derived quantities (all other state variables) as follows:
-\begin{itemize}
-\item \[{\theta_1}''=\frac{f-g}{h}\]\newline
-  where \[f = -g(2m_1+m_2)sin\theta_1-m_2gsin(\theta_1-2\theta_2)^2L_1cos(d)))\]\newline
-  \[g = 2(sin(\theta_1-\theta_2)m_2({{\theta_2}'}^2L_2+{{\theta_2}'}^2L_1cos(d)\big)\]
-  \[h = L_1(2m_1+m_2-m_2cos(2\theta_1-2\theta_2))\]
-  where \[d = \theta_1-\theta_2\]
-\item \[{\theta_2}''=\frac{2sin(d)({\theta_1}'L_1(m1+m2)+g(m_1+m_2)cos(\theta_1)+{(\theta_2}')^2L_2m_2cos(d)}{L_2(2m_1+m_2-m_2cos(2\theta_1-2\theta_2))}\]
-  where \[d = \theta_1-\theta_2\]
 
-\end{itemize}
+
 \item verify\_params()
 
 
@@ -402,7 +395,7 @@ N/A
 \newpage
 
 
-\section{MIS of Position ODEs Module} \label{POModule} 
+\section{MIS of Acceleration Equations Module} \label{AEModule} 
  
 \subsection{Module}
 Acceleration
@@ -413,10 +406,7 @@ Input
 \subsection{Syntax}
 
 \subsubsection{Exported Constants}
-\begin{itemize}
-  \item ${\theta_1}''$
-  \item ${\theta_2}''$
-\end{itemize}
+N/A
 
 \subsubsection{Exported Access Programs}
 
@@ -425,9 +415,9 @@ Input
 \hline
 \textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
 \hline
-getAcc1 & Input & string & - \\
+Acceleration\_Top & - & $\mathbb{R}$ & - \\
 \hline
-getAcc2 & Input & string & - \\
+Acceleration\_Bottom & - & $\mathbb{R}$ & - \\
 \hline
 \end{tabular}
 \end{center}
@@ -435,26 +425,28 @@ getAcc2 & Input & string & - \\
 \subsection{Semantics}
 
 \subsubsection{State Variables}
-N/A
+\begin{itemize}
+\item ${\theta_1}''$
+\item ${\theta_2}''$
+\end{itemize}
+
 \subsubsection{Environment Variables}
 N/A
 \subsubsection{Assumptions}
 N/A
 \subsubsection{Access Routine Semantics}
 
-\noindent getAcc1($m_1$, $m_2$, $L_1$. $L_2$, $\theta_1$, $\theta_2$, $g$):
+\noindent Acceleration\_Top():
 \begin{itemize}
-\item transition: N/A 
-\item output: 
-\[{\theta_1}''=\frac{-g(2m_1+m_2)sin\theta_1-m_2gsin(\theta_1-2\theta_2)-2sin(\theta_1-\theta_2)m_2({{\theta_2}'}^2L_2+{{\theta_2}'}^2L_1cos(\theta_1-\theta_2)\big)}{L_1(2m_1+m_2-m_2cos(2\theta_1-2\theta_2))}\]
+\item transition: \[{\theta_1}''=\frac{-g(2m_1+m_2)sin\theta_1-m_2gsin(\theta_1-2\theta_2)-2sin(\theta_1-\theta_2)m_2({{\theta_2}'}^2L_2+{{\theta_2}'}^2L_1cos(\theta_1-\theta_2)\big)}{L_1(2m_1+m_2-m_2cos(2\theta_1-2\theta_2))}\] 
+\item output: N/A
 \item exception: N/A
 \end{itemize}
 
-\noindent getAcc2($m_1$, $m_2$, $L_1$. $L_2$, $\theta_1$, $\theta_2$, $g$):
+\noindent Acceleration\_Bottom():
 \begin{itemize}
-\item transition: N/A 
-\item output: 
-\[{\theta_2}''=\frac{2sin(\theta_1-\theta_2)({\theta_1}'L_1(m1+m2)+g(m_1+m_2)cos(\theta_1)+{(\theta_2}')^2L_2m_2cos(\theta_1-\theta_2\big)}{L_2(2m_1+m_2-m_2cos(2\theta_1-2\theta_2))}\]
+\item transition: \[{\theta_2}''=\frac{2sin(\theta_1-\theta_2)({\theta_1}'L_1(m1+m2)+g(m_1+m_2)cos(\theta_1)+{(\theta_2}')^2L_2m_2cos(\theta_1-\theta_2\big)}{L_2(2m_1+m_2-m_2cos(2\theta_1-2\theta_2))}\] 
+\item output: N/A
 \item exception: N/A
 \end{itemize}
 
@@ -462,30 +454,31 @@ N/A
 
 N/A
 \newpage
-\section{MIS of ODE Solver Module} \label{ODEModule} 
-Multi-variable Rung-kutta algorithm will be used to approximate the angular velocity of the two mass. \cite{RungeKutta} This module outputs two lists of point velocity for each mass. 
+
+
+\section{MIS of Velocity ODEs Module} \label{VOModule} 
+ 
 \subsection{Module}
-RungeKutta
+Velocity
+
 \subsection{Uses}
 Acceleration
 
 \subsection{Syntax}
 
 \subsubsection{Exported Constants}
-\begin{itemize}
-  \item ${\theta_1}'$
-  \item ${\theta_2}'$
-\end{itemize}
+N/A
+
 \subsubsection{Exported Access Programs}
 
 \begin{center}
-\begin{tabular}{p{2cm} p{4cm} p{4cm} p{2cm}}
+\begin{tabular}{p{4cm} p{2cm} p{2cm} p{4cm}}
 \hline
 \textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
 \hline
-getVelocity1 & string & list & - \\
+Velocity\_Top & - & $\mathbb{R} \rightarrow \mathbb{R}^2$ & - \\
 \hline
-getVelocity2 & string & list & - \\
+Velocity\_Bottom & - & $\mathbb{R} \rightarrow \mathbb{R}^2$ & - \\
 \hline
 \end{tabular}
 \end{center}
@@ -493,32 +486,24 @@ getVelocity2 & string & list & - \\
 \subsection{Semantics}
 
 \subsubsection{State Variables}
-\begin{itemize}
-  \item $a_n$ = ${\theta_1}''(0.1,{\theta_1}')$ 
-  \item $b_n$ = ${\theta_1}''(0.105,{\theta_1}'+0.005a_n)$
-  \item $c_n$ = ${\theta_1}''(0.105,{\theta_1}'+0.005b_n)$
-  \item $d_n$ = ${\theta_1}''(0.11,{\theta_1}'+0.01b_n)$
-
-\end{itemize}
+N/A
 \subsubsection{Environment Variables}
-
 N/A
 \subsubsection{Assumptions}
-
 N/A
 \subsubsection{Access Routine Semantics}
 
-\noindent getVelocity1():
+\noindent Velocity\_Top():
 \begin{itemize}
 \item transition: N/A 
-\item output: $\forall n: \mathbb{Z}| n \in[0..10000]: \theta_1(n+1) = \theta_1(n) + 0.01/6(a_n+2b_n+2c_n+d_n) $
+\item output: $out:= $$\iint {\theta_1}'' \,d{\theta_1}'\,d{\theta_2}'$$ $
 \item exception: N/A
 \end{itemize}
 
-\noindent getVelocity2():
+\noindent Velocity\_Bottom():
 \begin{itemize}
 \item transition: N/A 
-\item output: $\forall n: \mathbb{Z}| n \in[0..10000]: \theta_2(n+1) = \theta_2(n) + 0.01/6(a_n+2b_n+2c_n+d_n) $
+\item output: $out:= $$\iint {\theta_2}'' \,d{\theta_1}'\,d{\theta_2}'$$ $
 \item exception: N/A
 \end{itemize}
 
@@ -527,35 +512,30 @@ N/A
 N/A
 \newpage
 
-
-\section{MIS of Velocity Equations Module} \label{VEModule} 
-The output module takes the point velocity of two masses, and outputs the point position of them in list form.
-
+\begin{comment}
+\section{MIS of Position ODEs Module} \label{POModule} 
+ 
 \subsection{Module}
-Output
+Velocity
 
 \subsection{Uses}
-RungeKutta
+Velocity
 
 \subsection{Syntax}
 
 \subsubsection{Exported Constants}
-\subsubsection{Exported Constants}
-\begin{itemize}
-  \item ${\theta_1}$
-  \item ${\theta_2}$
-\end{itemize}
+N/A
 
 \subsubsection{Exported Access Programs}
 
 \begin{center}
-\begin{tabular}{p{2cm} p{4cm} p{4cm} p{2cm}}
+\begin{tabular}{p{4cm} p{2cm} p{2cm} p{4cm}}
 \hline
 \textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
 \hline
-getPosition1 & list & list & - \\
+Position\_Top & - & $\mathbb{R}^2 \rightarrow \mathbb{R}^3$ & - \\
 \hline
-getPosition2 & list & list & - \\
+Position\_Bottom & - & $\mathbb{R}^2 \rightarrow \mathbb{R}^3$ & - \\
 \hline
 \end{tabular}
 \end{center}
@@ -563,7 +543,6 @@ getPosition2 & list & list & - \\
 \subsection{Semantics}
 
 \subsubsection{State Variables}
-
 N/A
 \subsubsection{Environment Variables}
 N/A
@@ -571,10 +550,17 @@ N/A
 N/A
 \subsubsection{Access Routine Semantics}
 
-\noindent getPosition1($(\theta_1)_n,(\theta_1)_0$):
+\noindent Position\_Top():
 \begin{itemize}
-\item transition: N/A  
-\item output: $\forall n: \mathbb{Z}| n \in[1..9999]: \theta_1(n+1) = \theta_1(n-1) + \theta_1(n)$
+\item transition: N/A 
+\item output: $out:= $$\iint {\theta_1}' \,d{\theta_1}\,d{\theta_2}$$ $
+\item exception: N/A
+\end{itemize}
+
+\noindent Position\_Bottom():
+\begin{itemize}
+\item transition: N/A 
+\item output: $out:= $$\iint {\theta_2}' \,d{\theta_1}\,d{\theta_2}$$ $
 \item exception: N/A
 \end{itemize}
 
@@ -583,13 +569,119 @@ N/A
 N/A
 
 \newpage
+\end{comment}
+
+\section{MIS of ODE Solver Module} \label{ODEModule} 
+\#\textit{Bold font is used to indicate variables that are a sequence
+  type} 
+\subsection{Module}
+Solver($n: \mathbb{N}$) \#\textit{$n$ is the length of the sequences}
+
+\subsection{Uses}
+None
+
+\subsection{Syntax}
+
+\subsubsection{Exported Constants}
+N/A
+\subsubsection{Exported Access Programs}
+
+\begin{center}
+\begin{tabular}{p{1.5cm} >{\raggedright\arraybackslash}p{9.25cm} >{\raggedright\arraybackslash}p{2.4cm} p{1.5cm}}
+  \hline
+  \textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Except.} \\
+  \hline
+  solve & $\textbf{f}: (\mathbb{R}^{n} \rightarrow \mathbb{R}^{n+1}), t_0 : \mathbb{R},
+          \textbf{y}_0: \mathbb{R}^n, 
+          t_\text{fin}: \mathbb{R}$ & $t_1: \mathbb{R}, 
+                                      \textbf{y}:
+                                      (\mathbb{R}
+                                      \rightarrow
+                                      \mathbb{R})^{n+1}$ & -\\
+
+  \hline 
+\end{tabular}
+\end{center}
+\subsection{Semantics}
+
+\subsubsection{State Variables}
+N/A
+
+\subsubsection{Environment Variables}
+
+N/A
+\subsubsection{Assumptions}
+
+N/A
+\subsubsection{Access Routine Semantics}
+
+\#\textit{Solving} $ $$\iint {y} $$ = \mathbf{f}(t,
+\mathbf{y}(t))$\\
+
+\noindent solve($\textbf{f}, t_0, \textbf{y}_0, t_\text{fin}$): 
+\begin{itemize}
+\item output: $out := t_1, \textbf{y}(t)$ where 
+$$\textbf{y}(t) = \textbf{y}_0 + \int_{t_0}^{t} \textbf{f}(s, \textbf{y}(s)) ds$$ 
+with $t_1$ determined to be 0.05 second.  $\textbf{y}(t)$ is
+calculated from $t = t_0$ to $t = t_1$.
+\item exception: N/A
+\end{itemize}
+\subsubsection{Local Functions}
+
+N/A
+
+\newpage
+\section{MIS of Plotting Module} \label{PModule} 
+
+\subsection{Module}
+Plot
+\subsection{Uses}
+N/A
+\subsection{Syntax}
+
+\subsubsection{Exported Constants}
+
+\subsubsection{Exported Access Programs}
+\begin{center}
+\begin{tabular}{p{2cm} p{8cm} p{2cm} p{2cm}}
+\hline
+\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+\hline
+plot & $\theta_1(t):\mathbb{R} \rightarrow \mathbb{R},
+                 \theta_2(t):\mathbb{R} \rightarrow \mathbb{R}
+                 $ & - & - \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{Semantics}
+
+\subsubsection{State Variables}
+N/A
+
+\subsubsection{Environment Variables}
+
+win: 2D sequence of pixels displayed on the screen\\
+
+\subsubsection{Assumptions}
+N/A
+\subsubsection{Access Routine Semantics}
+
+\noindent plot($\theta_1$, $\theta_2$):
+\begin{itemize}
+\item transition: Modify win to display a plot where the vertical axis
+  is angular position and horizontal axis is time. The time should run from $0$ to $t$.
+\item output: N/A
+\item exception: N/A
+\end{itemize}
+
+\subsubsection{Local Functions}
+
+N/A
+\newpage
+
 
 \section{MIS of Output Module} \label{OModule} 
-
-
-\wss{You can reference SRS labels, such as R\ref{R_Inputs}.}
-
-\wss{It is also possible to use \LaTeX for hypperlinks to external documents.}
 
 \subsection{Module}
 
@@ -605,11 +697,12 @@ N/A
 \subsubsection{Exported Access Programs}
 
 \begin{center}
-\begin{tabular}{p{2cm} p{4cm} p{4cm} p{2cm}}
+\begin{tabular}{p{3cm} p{7cm} p{2cm} p{2cm}}
 \hline
 \textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
 \hline
-\wss{accessProg} & - & - & - \\
+output & fname: string, $\theta_1(t):\mathbb{R} \rightarrow \mathbb{R},
+                 \theta_2(t):\mathbb{R} \rightarrow \mathbb{R}$ & - & - \\
 \hline
 \end{tabular}
 \end{center}
@@ -617,121 +710,33 @@ N/A
 \subsection{Semantics}
 
 \subsubsection{State Variables}
-
-\wss{Not all modules will have state variables.  State variables give the module
-  a memory.}
+N/A
 
 \subsubsection{Environment Variables}
 
-\wss{This section is not necessary for all modules.  Its purpose is to capture
-  when the module has external interaction with the environment, such as for a
-  device driver, screen interface, keyboard, file, etc.}
-
+file: A text file
 \subsubsection{Assumptions}
 
-\wss{Try to minimize assumptions and anticipate programmer errors via
-  exceptions, but for practical purposes assumptions are sometimes appropriate.}
-
+N/A
 \subsubsection{Access Routine Semantics}
 
-\noindent \wss{accessProg}():
+\noindent output(fname, $\theta_1$, $\theta_2$.$t$):
 \begin{itemize}
-\item transition: \wss{if appropriate} 
-\item output: \wss{if appropriate} 
-\item exception: \wss{if appropriate} 
+\item transition:  Write to environment variable named fname the
+  following: the input
+    parameters from Param, and the calculated values $\theta_1$, $\theta_2$from times $0$ to $t$.  The functions will be output as
+    sequences in this file.  The spacing between points in the sequence should
+    be selected so that the motion pf the pendulums is captured in the data.
+\item output: N/A
+\item exception: N/A
 \end{itemize}
-
-\wss{A module without environment variables or state variables is unlikely to
-  have a state transition.  In this case a state transition can only occur if
-  the module is changing the state of another module.}
-
-\wss{Modules rarely have both a transition and an output.  In most cases you
-  will have one or the other.}
 
 \subsubsection{Local Functions}
 
-\wss{As appropriate} \wss{These functions are for the purpose of specification.
-  They are not necessarily something that is going to be implemented
-  explicitly.  Even if they are implemented, they are not exported; they only
-  have local scope.}
-
-\newpage
-\section{MIS of Plotting Module} \label{PModule} 
-
-
-\wss{You can reference SRS labels, such as R\ref{R_Inputs}.}
-
-\wss{It is also possible to use \LaTeX for hypperlinks to external documents.}
-
-\subsection{Module}
-
-\wss{Short name for the module}
-
-\subsection{Uses}
-
-
-\subsection{Syntax}
-
-\subsubsection{Exported Constants}
-
-\subsubsection{Exported Access Programs}
-
-\begin{center}
-\begin{tabular}{p{2cm} p{4cm} p{4cm} p{2cm}}
-\hline
-\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
-\hline
-\wss{accessProg} & - & - & - \\
-\hline
-\end{tabular}
-\end{center}
-
-\subsection{Semantics}
-
-\subsubsection{State Variables}
-
-\wss{Not all modules will have state variables.  State variables give the module
-  a memory.}
-
-\subsubsection{Environment Variables}
-
-\wss{This section is not necessary for all modules.  Its purpose is to capture
-  when the module has external interaction with the environment, such as for a
-  device driver, screen interface, keyboard, file, etc.}
-
-\subsubsection{Assumptions}
-
-\wss{Try to minimize assumptions and anticipate programmer errors via
-  exceptions, but for practical purposes assumptions are sometimes appropriate.}
-
-\subsubsection{Access Routine Semantics}
-
-\noindent \wss{accessProg}():
-\begin{itemize}
-\item transition: \wss{if appropriate} 
-\item output: \wss{if appropriate} 
-\item exception: \wss{if appropriate} 
-\end{itemize}
-
-\wss{A module without environment variables or state variables is unlikely to
-  have a state transition.  In this case a state transition can only occur if
-  the module is changing the state of another module.}
-
-\wss{Modules rarely have both a transition and an output.  In most cases you
-  will have one or the other.}
-
-\subsubsection{Local Functions}
-
-\wss{As appropriate} \wss{These functions are for the purpose of specification.
-  They are not necessarily something that is going to be implemented
-  explicitly.  Even if they are implemented, they are not exported; they only
-  have local scope.}
-
+N/A
 \newpage
 
-
-\newpage
-
+ 
 
 \bibliographystyle {plainnat}
 \bibliography {../../../refs/References}
@@ -739,7 +744,20 @@ N/A
 \newpage
 
 \section{Appendix} \label{Appendix}
+\renewcommand{\arraystretch}{1.2}
 
-\wss{Extra information if required}
+\begin{longtable}{l p{12cm}}
+\caption{Possible Exceptions} \\
+\toprule
+\textbf{Message ID} & \textbf{Error Message} \\
+\midrule
+FileError & Error: The inputed file is invalid\\
+NEGATIVE\_MASS & Error: Mass of the pendulum must be $> 0$ \\
+NEGATIVE\_LENGTH & Error: Length of rods must be $> 0$ \\
+NEGATIVE\_GRAVITY & Error: Gravity must be $> 0$\\
+NEGATIVE\_TIME& Error: Time for the simulation must be $> 0$ \\
+
+\bottomrule
+\end{longtable}
 
 \end{document}

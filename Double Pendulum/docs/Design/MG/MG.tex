@@ -195,8 +195,8 @@ actually be implemented.
 \item [\refstepcounter{mnum} \mthemnum \label{mHH}:] Hardware-Hiding Module
 \item [\refstepcounter{mnum} \mthemnum \label{mIP}:] Input Parameters Module
 \item [\refstepcounter{mnum} \mthemnum \label{mOF}:] Output Format Module
-\item [\refstepcounter{mnum} \mthemnum \label{mVE}:] Velocity Equations Module
-\item [\refstepcounter{mnum} \mthemnum \label{mPO}:] Position ODEs Module
+\item [\refstepcounter{mnum} \mthemnum \label{mAE}:] Acceleration Equations Module
+\item [\refstepcounter{mnum} \mthemnum \label{mVO}:] Velocity ODEs Module
 \item [\refstepcounter{mnum} \mthemnum \label{mC}:] Control Module
 \item [\refstepcounter{mnum} \mthemnum \label{mSDS}:] Sequence Data Structure Module
 \item [\refstepcounter{mnum} \mthemnum \label{mODE}:] ODE Solver Module
@@ -219,8 +219,8 @@ actually be implemented.
 \multirow{7}{0.3\textwidth}{Behaviour-Hiding Module} 
 & Input Parameters Module\\
 & Output Format Module\\
-& Velocity Equations Module\\
-& Position ODEs Module\\
+& Acceleration Equations Module\\
+& Velocity ODEs Module\\
 & Control Module\\
 
 \midrule
@@ -298,19 +298,19 @@ to be implemented.
 \item[Implemented By:] Double Pendulum
 \end{description}
 
-\subsubsection{Velocity Equations Module (\mref{mVE})}
+\subsubsection{Acceleration Equations Module (\mref{mAE})}
 
 \begin{description}
 \item[Secrets:]The equations for solving for the velocity using the input parameters. 
-\item[Services:]Defines the velocity equations using the parameters in the input parameters module. 
+\item[Services:]Defines the acceleration equations using the parameters in the input parameters module. 
 \item[Implemented By:] Double Pendulum
 \end{description}
 
-\subsubsection{Position ODEs Module (\mref{mPO})}
+\subsubsection{Velocity ODEs Module (\mref{mVO})}
 
 \begin{description}
-\item[Secrets:]The ODEs for solving the angular positions, using the velocity equation parameters. 
-\item[Services:]Defines the ODEs using the equations in velocity equations module. 
+\item[Secrets:]The ODEs for solving the angular velocity, using the acceleration equation parameters. 
+\item[Services:]Defines the ODEs using the equations in acceleration equations module. 
 \item[Implemented By:] Double Pendulum
 \end{description}
 
@@ -376,7 +376,7 @@ requirements and between the modules and the anticipated changes.
 \midrule
 R1 & \mref{mHH}, \mref{mIP},\mref{mC}\\
 R2 & \mref{mIP}\\
-R3 & \mref{mVE}, \mref{mPO}, \mref{mC},\mref{mODE} \\
+R3 & \mref{mAE}, \mref{mVO}, \mref{mC},\mref{mODE} \\
 R4 & \mref{mOF}, \mref{mC}\\
 R5 & \mref{mSDS}, \mref{mC}, \mref{mP}\\ 
 \bottomrule
