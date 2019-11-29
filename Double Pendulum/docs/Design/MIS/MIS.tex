@@ -64,7 +64,8 @@ Nov.13 & 1.0 & Initial Draft\\
 
 \section{Symbols, Abbreviations and Acronyms}
 
-See SRS Documentation at \url{https://github.com/best-zhang-zhi/CAS741Project/blob/master/Double%20Pendulum/docs/SRS/SRS.pdf}
+See SRS Documentation at
+\url{https://github.com/best-zhang-zhi/CAS741Project/blob/master/Double%20Pendulum/docs/SRS/SRS.pdf}
 
 \newpage
 
@@ -76,7 +77,9 @@ See SRS Documentation at \url{https://github.com/best-zhang-zhi/CAS741Project/bl
 
 \section{Introduction}
 
-The following document details the Module Interface Specifications for Double Pendulum, a software which determines the motion of a double pendulum given the initial conditions from user inputs. 
+The following document details the Module Interface Specifications for Double
+Pendulum, a software which determines the motion of a double pendulum given the
+initial conditions from user inputs.
 
 Complementary documents include the System Requirement Specifications
 and Module Guide.  The full documentation and implementation can be
@@ -163,7 +166,9 @@ The control module provides the main program.
 main
 
 \subsection{Uses}
-Param(Section~\ref{IPModule}), Acceleration(Section~\ref{AEModule}), Velocity(Section~\ref{VOModule}), Solver(Section~\ref{ODEModule}), Plot(Section~\ref{PModule}), Output(Section~\ref{OModule})
+Param (Section~\ref{IPModule}), Acceleration (Section~\ref{AEModule}),
+Velocity (Section~\ref{VOModule}), Solver (Section~\ref{ODEModule}),
+Plot (Section~\ref{PModule}), Output (Section~\ref{OModule})
 
 \subsection{Syntax}
 
@@ -206,11 +211,23 @@ N/A
 
 \noindent load\_params(filenameIn)\\
 \noindent \#\textit{Find angular velocity function} ($\theta_1, \theta_2$)\\
-\noindent ${\theta_1}'$:= \text{solve}(\text{Acceleration\_Top},0.0, 0.0,$t$)\\
+\noindent ${\theta_1}'$:= \text{solve}(\text{Acceleration\_Top},0.0, 0.0,$t$)
+\wss{Where is the value of $t$ given?}\\
 \noindent ${\theta_2}'$:= \text{solve}(\text{Acceleration\_Bottom},0.0, 0.0,$t$)\\
 \noindent \#\textit{Find angular position function} ($\theta_1, \theta_2$)\\
 \noindent $\theta_1$:= \text{solve}(\text{Velocity\_Top},0.0, 0.0,$t$)\\
 \noindent $\theta_2$:= \text{solve}(\text{Velocity\_Bottom},0.0, 0.0,$t$)\\
+
+\wss{You have a second order ODE, but looking at your document, it appears that
+  you haven't really thought about how to solve it.  The SWHS example that you
+  based your document on is for a first order ODE.  You'll need to make changes.
+  Not big changes, but changes.  For instance, your solver modules shows the
+  equation for solving a first order ODE.  I think the easiest thing for you to
+  do is to focus on what you actually need.  You need theta as a function of
+  time.  You don't really need the angular velocity.  Therefore, your solver
+  should take the definition of theta'' and return theta.  You can leave the
+  angular velocity out of it altogether.  Your solver module then just has to
+  say mathematically what it means to solve a second order ODE.}
 
 \noindent \#\textit{Output calculated values to a file and to a plot.}\\
 
@@ -224,8 +241,10 @@ N/A
 
 \newpage
 
-\section{MIS of Input Parameter Module} \label{IPModule} 
-The secrets of this module are the data structure for input parameters, how the values are input and how the values are verified. The load and verify secrets are isolated to their own access programs.
+\section{MIS of Input Parameter Module} \label{IPModule} The secrets of this
+module are the data structure for input parameters, how the values are input and
+how the values are verified. The load and verify secrets are isolated to their
+own access programs.
 
 \subsection{Module}
 
@@ -422,6 +441,11 @@ Acceleration\_Bottom & - & $\mathbb{R}$ & - \\
 \end{tabular}
 \end{center}
 
+\wss{You probably do not want to split the acceleration into two access
+  programs.  You are solving a system of ODEs, so the ODE solver will expect
+  both inputs (top and bottom).  You are better off outputting a sequence of two
+  values.}
+
 \subsection{Semantics}
 
 \subsubsection{State Variables}
@@ -459,7 +483,8 @@ N/A
 \section{MIS of Velocity ODEs Module} \label{VOModule} 
  
 \subsection{Module}
-Velocity
+Velocity \wss{As mentioned in the first module, I don't think you need the
+  Velocity module.}
 
 \subsection{Uses}
 Acceleration
