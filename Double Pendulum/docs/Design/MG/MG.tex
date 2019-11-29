@@ -160,10 +160,14 @@ change.
   hardware on which the software is running.
 \item[\refstepcounter{acnum} \actheacnum \label{acInput}:] The format of the
   initial input data.
-\item[\refstepcounter{acnum} \actheacnum \label{acInputParam}:] The format of the input parameters.
-\item[\refstepcounter{acnum} \actheacnum \label{acConstraints}:] The constraints on the input parameters. 
-\item[\refstepcounter{acnum} \actheacnum \label{acOutput}:] The format of the final output data. 
-\item[\refstepcounter{acnum} \actheacnum \label{acODE}:] The algorithm used for the ODE solver. 
+\item[\refstepcounter{acnum} \actheacnum \label{acInputParam}:] The format of
+  the input parameters.
+\item[\refstepcounter{acnum} \actheacnum \label{acConstraints}:] The constraints
+  on the input parameters.
+\item[\refstepcounter{acnum} \actheacnum \label{acOutput}:] The format of the
+  final output data.
+\item[\refstepcounter{acnum} \actheacnum \label{acODE}:] The algorithm used for
+  the ODE solver.
 \end{description}
 
 \subsection{Unlikely Changes} \label{SecUchange}
@@ -178,10 +182,15 @@ decisions will be changed.
 \begin{description}
 \item[\refstepcounter{ucnum} \uctheucnum \label{ucIO}:] Input/Output devices
   (Input: File and/or Keyboard, Output: File, Memory, and/or Screen).
-\item[\refstepcounter{ucnum} \uctheucnum \label{ucInput}:] There will always be a source of input data external to the software. 
-\item[\refstepcounter{ucnum} \uctheucnum \label{ucOutput}:] Output data are displayed to the output device. 
-\item[\refstepcounter{ucnum} \uctheucnum \label{ucGoal}:] The goal of the system is to calculate angular position of two masses. 
-\item[\refstepcounter{ucnum} \uctheucnum \label{ucODE}:] The ODEs for angular position can be defined using parameters defined in the input parameters module. 
+\item[\refstepcounter{ucnum} \uctheucnum \label{ucInput}:] There will always be
+  a source of input data external to the software.
+\item[\refstepcounter{ucnum} \uctheucnum \label{ucOutput}:] Output data are
+  displayed to the output device.
+\item[\refstepcounter{ucnum} \uctheucnum \label{ucGoal}:] The goal of the system
+  is to calculate angular position of two masses.
+\item[\refstepcounter{ucnum} \uctheucnum \label{ucODE}:] The ODEs for angular
+  position can be defined using parameters defined in the input parameters
+  module.
 \end{description}
 
 \section{Module Hierarchy} \label{SecMH}
@@ -286,7 +295,8 @@ to be implemented.
 
 \begin{description}
 \item[Secrets:]The format and structure of the input data.
-\item[Services:]Gets input from user, stores input and verifies that the input parameters comply with the physical constraints.
+\item[Services:]Gets input from user, stores input and verifies that the input
+  parameters comply with the physical constraints.
 \item[Implemented By:] Double Pendulum
 \end{description}
 
@@ -294,23 +304,28 @@ to be implemented.
 
 \begin{description}
 \item[Secrets:]The format and structure of the output data.
-\item[Services:]Outputs the results of the calculations, including the input parameters, angular positions of two masses. 
+\item[Services:]Outputs the results of the calculations, including the input
+  parameters, angular positions of two masses.
 \item[Implemented By:] Double Pendulum
 \end{description}
 
 \subsubsection{Acceleration Equations Module (\mref{mAE})}
 
 \begin{description}
-\item[Secrets:]The equations for solving for the velocity using the input parameters. 
-\item[Services:]Defines the acceleration equations using the parameters in the input parameters module. 
+\item[Secrets:]The equations for solving for the velocity using the input
+  parameters.
+\item[Services:]Defines the acceleration equations using the parameters in the
+  input parameters module.
 \item[Implemented By:] Double Pendulum
 \end{description}
 
 \subsubsection{Velocity ODEs Module (\mref{mVO})}
 
 \begin{description}
-\item[Secrets:]The ODEs for solving the angular velocity, using the acceleration equation parameters. 
-\item[Services:]Defines the ODEs using the equations in acceleration equations module. 
+\item[Secrets:]The ODEs for solving the angular velocity, using the acceleration
+  equation parameters.
+\item[Services:]Defines the ODEs using the equations in acceleration equations
+  module.
 \item[Implemented By:] Double Pendulum
 \end{description}
 
@@ -340,15 +355,19 @@ to be implemented.
 
 \begin{description}
 \item[Secrets:]The data structure for a sequence data type. 
-\item[Services:]Provides array manipulation, including building an array, accessing a specific entry, slicing an array, etc.  
+\item[Services:]Provides array manipulation, including building an array,
+  accessing a specific entry, slicing an array, etc.
 \item[Implemented By:] Matlab
 \end{description} 
 
 \subsubsection{ODE Solver Module (\mref{mODE})}
 
 \begin{description}
-\item[Secrets:]The algorithm to solve a system of first order ODEs initial value problem from a given starting time until the given event functions shows termination. 
-\item[Services:]Solves an ODE using the governing equation, initial conditions, event function and numerical parameters. 
+\item[Secrets:]The algorithm to solve a system of first order ODEs initial value
+  problem from a given starting time until the given event functions shows
+  termination.
+\item[Services:]Solves an ODE using the governing equation, initial conditions,
+  event function and numerical parameters.
 \item[Implemented By:] Matlab
 \end{description} 
 
@@ -403,6 +422,12 @@ R5 & \mref{mSDS}, \mref{mC}, \mref{mP}\\
 \label{TblACT}
 \end{table}
 
+\wss{Your M2 maps to two different ACs.  You should explain this.  In this case,
+  I think the explanation is that mapping M2 to two ACs was a mistake,
+  especially since there are modules that do not map to any ACs.  You also have
+  other modules that do not map to an AC.  You generally want every module to be
+  associated with an AC.}
+
 \section{Use Hierarchy Between Modules} \label{SecUse}
 
 In this section, the uses hierarchy between modules is
@@ -423,9 +448,14 @@ because they use modules from the lower levels.
 \label{FigUH}
 \end{figure}
 
+\wss{Your uses hierarchy shows a module that isn't mentioned elsewhere -
+  Position ODEs module.}
+
 %\section*{References}
 
 \bibliographystyle {plainnat}
 \bibliography{../../../refs/References}
+
+\wss{Your references did not work.}
 
 \end{document}
