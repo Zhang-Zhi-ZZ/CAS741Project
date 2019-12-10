@@ -8,7 +8,6 @@
 \usepackage{amssymb}
 \usepackage{graphicx}
 \usepackage{colortbl}
-\usepackage{xr}
 \usepackage{hyperref}
 \usepackage{longtable}
 \usepackage{xfrac}
@@ -22,9 +21,9 @@
 \usepackage{cool}
 \usepackage{comment}
 \usepackage{adjustbox}
-
+\usepackage{xr-hyper}
 \restylefloat{table}
-
+\externaldocument{../../SRS/SRS}
  
 \hypersetup{
     colorlinks,
@@ -178,7 +177,7 @@ N/A \wss{I agree, but you should say why it is N/A.}
 
 \section{System Test Description}\label{sec_sysTest}
 	
-\subsection{Tests for Functional Requirements} \label{sec_fr}
+\subsection{Tests for Functional Requirements} \label{sec_testFR}
 
 There are five functional requirements described in section 5.1 \wss{You can
   cross-reference between documents in \LaTeX} of the SRS.  \wss{Copying the
@@ -405,14 +404,15 @@ myPhysicsLab.com~\cite{Double_Pendulum} and compare the graphs.
   happen quicker than you think.  :-)}
 
   
-\subsection{Tests for Nonfunctional Requirements}
+\subsection{Tests for Nonfunctional Requirements} \label{sec_TestNFR}
 
-There are five nonfunctional requirements described in section 6.1 of SRS.
+There are five nonfunctional requirements of the system as specified in SRS.
 
+\begin{comment}
 \noindent \begin{itemize}
 
 \item[NFR\refstepcounter{reqnum}\thereqnum \label{NFR_Correct}:] 
-The outputs of the code have the properties described in table~\nameref{TblOutputVar}.
+The outputs of the code have the properties described in section 
 \item[NFR\refstepcounter{reqnum}\thereqnum \label{NFR_Verifiable}:]  
 The code is tested with complete verification and validation plan.
 \item[NFR\refstepcounter{reqnum}\thereqnum \label{NFR_Reusable}:]
@@ -438,7 +438,7 @@ The code is able to be run in different environments.
   \bottomrule
 \end{longtable*}
 \end{table}
-
+\end{comment}
 \subsubsection{Correctness and Verifiability}\label{CnV}
 		
 The correctness test covers the NFR~\ref{NFR_Correct}, and the verifiability
@@ -447,7 +447,7 @@ software meets the SRS, and they are been tested in the section
 ~\ref{VRF_Output}.
 
 \subsubsection{Maintainability}\label{MainTest}
-The maintainability test covers the NFR~\ref{NFR_Maintainable}. 
+The maintainability test covers the NFR~\ref{R_Maintainable}. 
 \paragraph{Maintainability Testing\\} 
 
 Type: Manual, Nonfunctional, Dynamic
@@ -463,7 +463,7 @@ software or modify some parts of the software. \wss{You need to be more
   specific.  How would someone actually do this test?}
 
 \subsubsection{Re-usability}\label{ReuseTest}
-The re-usability test covers the NFR~\ref{NFR_Reusable}. 
+The re-usability test covers the NFR~\ref{R_Reusable}. 
 
 \paragraph{Re-usability Testing\\}
 Type: Manual, Nonfunctional
