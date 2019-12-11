@@ -104,7 +104,7 @@ be discussed, with the traceability between test cases and requirements.
 
 The software to be tested is Double Pendulum. This software allows user to input
 the initial conditions of double pendulum, calculates the equations for the
-movements of the two pendulums, and then output the result to a text file.
+movements of the two pendulums, and then output the result to a .txt text file.
 
 \subsection{Objectives} \label{objective}
 
@@ -312,8 +312,7 @@ Output: An error message of``''Please input positive value for the the \wss{proo
 
 Test Case Derivation: Check if the error message pops up. 
 
-How test will be performed: Manually input the above the Input data to the
-software by test team.
+How test will be performed: Unit Test framework will feed function with the aforementioned input, verify that the correct exception is raised and the error message is displayed.
            
 \item{Zero Starting Angle}  
 
@@ -330,8 +329,7 @@ software by test team.
 
   Test Case Derivation: Check if the error message pops up.
 
-  How test will be performed: Manually input the above the Input data to the
-  software by test team.
+  How test will be performed: Unit Test framework will feed function with the aforementioned input, verify that the correct exception is raised and the error message is displayed.
   
 \end{enumerate}
 
@@ -353,12 +351,11 @@ Input: $m_1$ = 10 $m_2$ = 10 $L_1$ = 10 $L_2$ = 10 $\theta_1$ = 10 $\theta_2$ =
 
 \end{itemize}
 
-Output: The output file is generated and the graphs are displayed.
+Output: The output .txt file is generated and the graphs are displayed.
 
 Test Case Derivation: Check if there is output file and the graphs.
 
-How test will be performed: Manually input the above the Input data to the
-software by test team.
+How test will be performed: Unit Test framework will feed function with the aforementioned input, verify that the output file is generated and the graphs are displayed. 
 
 \end{enumerate}
 
