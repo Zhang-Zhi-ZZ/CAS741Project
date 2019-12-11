@@ -8,7 +8,7 @@
 \usepackage{amssymb}
 \usepackage{graphicx}
 \usepackage{colortbl}
-\usepackage{hyperref}
+
 \usepackage{longtable}
 \usepackage{xfrac}
 \usepackage{tabularx}
@@ -21,14 +21,15 @@
 \usepackage{cool}
 \usepackage{comment}
 \usepackage{adjustbox}
-\usepackage{xr-hyper}
+\usepackage{xr}
+\usepackage{hyperref}
 \restylefloat{table}
 \externaldocument{../../SRS/SRS}
  
 \hypersetup{
     colorlinks,
-    citecolor=black,
-    filecolor=black,
+    citecolor=green,
+    filecolor=green,
     linkcolor=red,
     urlcolor=blue
 }
@@ -57,6 +58,7 @@
 \toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
 \midrule
 Oct.30 & 1.0 & Initial Draft\\
+Dec.10 & 2.0 & Fixed Issues\\
 
 \bottomrule
 \end{tabularx}
@@ -104,7 +106,7 @@ The software to be tested is Double Pendulum. This software allows user to input
 the initial conditions of double pendulum, calculates the equations for the
 movements of the two pendulums, and then output the result to a text file.
 
-\subsection{Objectives}
+\subsection{Objectives} \label{objective}
 
 The objective of the VnV plan is to verify the FR and NFR, as found in the SRS
 titled Double Pendulum, has been met. The most important requirement is the
@@ -118,13 +120,16 @@ the motion of a double pendulum.
 
 The relevant documentations are:
 \begin{itemize}
-    \item SRS
-    \item Unit VnV Plan
+    \item SRS ~\cite{SRS}
+    \item Unit VnV Plan ~\cite{UnitVnV}
+    \item System VnV Report~\cite{SystemVnVReport}
+    \item Unit Vnv Report~\cite{UnitVnVReport}
 \end{itemize}
 
 \wss{You should cite these documents, including the GitHub url for their
   location.  You should also mention all of the documents that you will write
   for this course, even though they are not all complete.}
+  \an{done}
 
 \section{Plan}\label{sec_Plan}
 	
@@ -133,56 +138,73 @@ The relevant documentations are:
 
 \begin{itemize}
     \item Zhi Zhang
+    \item Dr.~Spencer Smith \href{https://github.com/smiths}{smiths} and Bo Cao \href{https://github.com/caobo1994}{caobo1994} review the whole project, including all documents and codes.
+    \item Deema Alomair \href{https://github.com/deemaalomair1}{deemaalmair1} reviews the SRS. 
+    \item Ao Dong \href{https://github.com/Ao99}{Ao99} reviews MG and MIS. 
+    \item Sharon Wu \href{https://github.com/sharyuwu}{sharyuwu} reviews the VnV Plan. 
 \end{itemize}
 
 \wss{You should also list your colleagues in the class, because they will be
-  helping you with the VnV efforts.}
+  helping you with the VnV efforts.}\an{Done.}
 
 \subsection{SRS Verification Plan}
+The SRS of Double Pendulum will be verified in the following ways:(\cite{SystVnVPlan})
 
-The SRS verification plan will include feedback from author's professor and
-classmates, mainly the domain expert.  \wss{The review would be more useful if
+\begin{enumerate}
+\item Feedback: Classmates, including all primary and secondary reviewers listed above, shall provide feedback on GitHub. They shall read the document and provide insight on how to improve the documents and the project.  
+\item Initial Review: The document shall be manually reviewed by the author
+  using the SRS checklist upon its initial creation, as found in the CAS741
+  GitLab repository (\citet{CAS741_SRS_checklist}). 
+\item Second Review: The document shall be manually reviewed by the author using the SRS checklist after VnV completion, as found in the CAS741 GitLab repository (\citet{CAS741_SRS_checklist}). 
+\item Final Review: The document shall be manually reviewed by the author using the SRS checklist after MG and MIS development, as found in the CAS741 repository (\citet{CAS741_SRS_checklist}).  
+\end{enumerate}
+%%The SRS verification plan will include feedback from author's professor and
+%%classmates, mainly the domain expert.  
+\wss{The review would be more useful if
   it was more structured.  Maybe you have some ideas for a way to structure the
-  review?  Maybe there can be a task-based review?}
+  review?  Maybe there can be a task-based review?} \an{I think Peter's SRS Verification Plan is very detailed, so I refered to his plan.}
+
+
 
 \subsection{Design Verification Plan}
 
-The design verification plan will include feedback from author's professor and
-classmates, mainly the domain expert.
+%The design verification plan will include feedback from author's professor and
+%classmates, mainly the domain expert.
+The design will be verified by ensuring that functional requirements and NFRs are tested, as listed in Section ~\ref{objective}. The system functional requirements will be tested as outlined in Section~\ref{sec_testFR}, and the NFRs will be tested as outlined in Section~\ref{sec_TestNFR}. 
 \wss{As for the SRS, you can flesh this out in greater detail.  Peter has a nice
-  design verification plan in his document.}
+  design verification plan in his document.} 
 
-\wss{Plans for design verification}
+\wss{Plans for design verification} \an{Done.}
 
 \subsection{Implementation Verification Plan}
 
 The implementation verification plan will include the followings:
 \begin{itemize}
     \item Code walkthroughs: both the developer and the domain expert will
-inspect the code to ensure all the requirements of the SRS are met. \wss{How is
+inspect the code to ensure all the functional requirements of the SRS are met and all modules of MIS document are implemented. A rubber duck debugging method will be followed. Any defects shall be immediately fixed.  \wss{How is
   this going to be done?  How will the walkthrough be structured?  What
-  reference are you going to follow?}
-    \item Unit testing: all modules are to be unit tested to ensure correctness,
-more details of unit testing can be found in the Unit Testing Plan. \wss{What
-  technology will you use for unit testing?}
+  reference are you going to follow?} \an{Updated.}
+    \item Unit testing: all modules are to be unit tested to ensure correctness, dynamic unit test will be carried out, more details of unit testing can be found in the Unit Testing Plan. \wss{What
+  technology will you use for unit testing?} \an{Dynamic unit test.}
     \item Dynamic testing: the software will be executed and all its functions
-will be tested mannually by test team.
+will be tested manually by test team.
 \end{itemize}
 
 
 \subsection{Software Validation Plan}
-
-N/A \wss{I agree, but you should say why it is N/A.}
+Double Pendulum does not have a validation step. Validation is the process of comparing the outputs of models to experimental values. Double Pendulum only illustrates the motion of the pendulum in ideal condition ignoring air drag and other possible features that may affect the motion. So there is to need to validate the outputs of Double Pendulum. 
+ \wss{I agree, but you should say why it is N/A.} \an{Explained above.}
 
 
 \section{System Test Description}\label{sec_sysTest}
 	
 \subsection{Tests for Functional Requirements} \label{sec_testFR}
 
-There are five functional requirements described in section 5.1 \wss{You can
-  cross-reference between documents in \LaTeX} of the SRS.  \wss{Copying the
-  requirements here is a maintenance nightmare.}
-
+There functional requirements are described in section \ref{sec_funReq} of the SRS. 
+\wss{You can
+  cross-reference between documents in \LaTeX}  \wss{Copying the
+  requirements here is a maintenance nightmare.} \an{Done.}
+\begin{comment}
 \noindent \begin{itemize}
 
 \item[R\refstepcounter{reqnum}\thereqnum \label{R_Inputs}:] Input the required
@@ -195,16 +217,18 @@ equation for the following values: $\theta_1$(t) and $\theta_1$(t).
 to a file.
 \item[R\refstepcounter{reqnum}\thereqnum \label{R_Graphs}:] Output graphs of
 $\theta_1$(t) and $\theta_1$(t).
-
+\end{comment}
 Double Pendulum shall verify that the inputs are valid, shall guarantee the
 calculation is correct and the outputs are in the correct form.
 
 Detailed test plan for the five functional requirements will be covered in the
 next five subsections.
-\end{itemize}
+%\end{itemize}
+
 
 \subsubsection{Input Verification}\label{InputVerif}
 
+\begin{comment}
 \begin{table}[H]
   \caption{Input Variables} \label{TblInputVar}
   \renewcommand{\arraystretch}{1.2}
@@ -236,35 +260,33 @@ covers requirements R.\ref{R_Inputs} and R.\ref{R_VarifyInputs}.
 
 \wss{Why repeat this table from the SRS here?  Also, the table is wider than it
   has to be.}
-
+\end{comment}
 \paragraph{Invalid Inputs}
 
 \begin{enumerate}
 					
 \item{Non-positive Mass}
 
-Control: Manual  
+Control: Automatic
 					
 Initial State: Double Pendulum is started and running
 					
 Input: 
-$m_1$ = -10
-$m_2$ = 0
-$L_1$ = 10
-$L_2$	= 10			
-$\theta_1$ = 10 
-$\theta_2$ = 10
-$g$ = 9.8
+\begin{itemize}
+\item $m_1$ = 0, $m_2$ = -10, $L_1$ = 10, $L_2$ = 10, $\theta_1$ = 10, $\theta_2$ = 10, $g$ = 9.8
+\item $m_1$ = 0, $m_2$ = 0, $L_1$ = 10, $L_2$ = 10, $\theta_1$ = 10, $\theta_2$ = 10, $g$ = 9.8
+\item $m_1$ = -10, $m_2$ = 0, $L_1$ = 10, $L_2$	= 10, $\theta_1$ = 10, $\theta_2$ = 10, $g$ = 9.8
+\item $m_1$ = -10, $m_2$ = -10, $L_1$ = 10, $L_2$ = 10, $\theta_1$ = 10, $\theta_2$ = 10, $g$ = 9.8
 
-Output: An error message of "Please input positive value for the
-mass". \wss{Quotes are done using ``quote''}
+\end{itemize}
 
-Test Case Derivation: Check if the error message pops up. 
+Output: Error message of ``Please input positive value for the mass''. \wss{Quotes are done using ``quote''} \an{Fixed}
 
-How test will be performed: Manually input the above the Input data to the
-software by test team. \wss{No, this test should be automated.  Rather than
+Test Case Derivation: Check if the NEGATIVE\_MASS exception is raised and error message pops up. 
+
+How test will be performed: Unit Test framework will feed function with the aforementioned input, verify that the correct exception is raised and the error message is displayed.  \wss{No, this test should be automated.  Rather than
   waiting for an error message, you should have unit tests that verify that the
-  correct exception is raised.}
+  correct exception is raised.} \an{updated.}
 
 \item{Non-positive Length of Rods}  
 
@@ -273,19 +295,20 @@ Control: Manual
 Initial State: Double Pendulum is started and running
           
 Input: 
-$m_1$ = 10
-$m_2$ = 20
-$L_1$ = -10
-$L_2$ = 0      
-$\theta_1$ = 10 
-$\theta_2$ = 10
-$g$ = 9.8
+\begin{itemize}
+\item $m_1$ = 10, $m_2$ = 20, $L_1$ = 0, $L_2$ = 0, $\theta_1$ = 10, $\theta_2$ = 10, $g$ = 9.8
+\item $m_1$ = 10, $m_2$ = 20, $L_1$ = 0, $L_2$ = -10, $\theta_1$ = 10, $\theta_2$ = 10, $g$ = 9.8
+\item $m_1$ = 10, $m_2$ = 20, $L_1$ = -10, $L_2$ = 0, $\theta_1$ = 10, $\theta_2$ = 10, $g$ = 9.8
+\item $m_1$ = 10, $m_2$ = 20, $L_1$ = -10, $L_2$ = -10, $\theta_1$ = 10, $\theta_2$ = 10, $g$ = 9.8
+
+\end{itemize}
+
 
 \wss{You could use tables to make this document less repetitive.  Define the
   base test case and then give the delta to define the other test cases.}
 
-Output: An error message of "Please input positive value for the the \wss{proof
-  read} length of rods".
+Output: An error message of``''Please input positive value for the the \wss{proof
+  read}\an{fixed.} length of rods''.
 
 Test Case Derivation: Check if the error message pops up. 
 
@@ -298,9 +321,12 @@ software by test team.
           
   Initial State: Double Pendulum is started and running
           
-  Input: $m_1$ = 10 $m_2$ = 10 $L_1$ = 10 $L_2$ = 10 $\theta_1$ = 0 $\theta_2$ =
-  0 $g$ = 9.8 Output: An error message of "Please input non-zero value for the
-  starting angle".
+  Input: 
+  \begin{itemize}
+  \item $m_1$ = 10, $m_2$ = 20, $L_1$ = 10, $L_2$ = 20, $\theta_1$ = 0, $\theta_2$ = 0, $g$ = 9.8
+  \end{itemize}
+
+  Output: An error message of "Please input at least one non-zero value for the starting angles".
 
   Test Case Derivation: Check if the error message pops up.
 
@@ -320,7 +346,14 @@ Control: Manual
 Initial State: Double Pendulum is started and running
           
 Input: $m_1$ = 10 $m_2$ = 10 $L_1$ = 10 $L_2$ = 10 $\theta_1$ = 10 $\theta_2$ =
-10 $g$ = 9.8 Output: The output file is generated and the graphs are displayed.
+10 $g$ = 9.8 
+\begin{itemize}
+\item $m_1$ = 10, $m_2$ = 20, $L_1$ = 10, $L_2$ = 10, $\theta_1$ = 0, $\theta_2$ = 10, $g$ = 9.8
+\item $m_1$ = 10, $m_2$ = 20, $L_1$ = 10, $L_2$ = 20, $\theta_1$ = 10, $\theta_2$ = 0, $g$ = 9.8
+
+\end{itemize}
+
+Output: The output file is generated and the graphs are displayed.
 
 Test Case Derivation: Check if there is output file and the graphs.
 
@@ -337,7 +370,21 @@ R.\ref{R_Graphs}.
 \paragraph{Outputs Correctness Tests}
 
 \begin{enumerate}
+\item{Correct Output}  
 
+Type: Dynamic, Manual 
+          
+Initial State: Double Pendulum takes valid inputs and generate an output file
+          
+Input/Condition: 
+Compare a sequence of outputs generated over the same time steps between Double Pendulum and Matlab ode23 solver with the same inputs. 
+
+Output/Result: Check if the relative error between each value at each time step is within 0.2.
+          
+How test will be performed: Test team will manually input the same data into
+myPhysicsLab.com~\cite{Double_Pendulum} and compare the graphs. 
+
+\begin{comment}
 \item{File Created}  
 
 Type: Manual
@@ -353,6 +400,8 @@ Pendulum to check the existence of the output file. \wss{This isn't wrong, but
   it isn't a very necessary test.  You need a test to verify that the output is
   correct.  That test implicitly includes this test, so you don't really need to
   separate this out.}
+
+\end{comment}
           
 \item{Graph Generated} 
 
@@ -361,28 +410,16 @@ Type: Dynamic, Manual
 Initial State: Double Pendulum takes valid inputs and the output file is
 generated
           
-Input/Condition: Press Graph button 
+Input/Condition: - 
           
-Output/Result: Graphs of $\theta_1$ and $\theta_2$ displayed on the screen of
+Output/Result: Graphs of $\theta_1(t)$ and $\theta_2(t)$ displayed on the screen of
 the software
           
 How test will be performed: Test team will manually press the Graph button and
 check if the graph is displayed \wss{Aren't you also checking to see if the
   graph is correct?}
 
-\item{Correct Output}  
 
-Type: Dynamic, Manual 
-          
-Initial State: The graphs are generated 
-          
-Input/Condition: Compare the graphs to the graphs generated on
-myPhysicsLab.com~\cite{Double_Pendulum} with the same inputs.
-          
-Output/Result: Check if the graphs match.
-          
-How test will be performed: Test team will manually input the same data into
-myPhysicsLab.com~\cite{Double_Pendulum} and compare the graphs. 
 
 \end{enumerate}
 
@@ -442,7 +479,7 @@ The code is able to be run in different environments.
 \subsubsection{Correctness and Verifiability}\label{CnV}
 		
 The correctness test covers the NFR~\ref{NFR_Correct}, and the verifiability
-test covers the NFR ~\ref{NFR_Verifiable}. Both tests are to ensure that the
+test covers the NFR~\ref{NFR_Verifiable}. Both tests are to ensure that the
 software meets the SRS, and they are been tested in the section
 ~\ref{VRF_Output}.
 
@@ -450,17 +487,15 @@ software meets the SRS, and they are been tested in the section
 The maintainability test covers the NFR~\ref{R_Maintainable}. 
 \paragraph{Maintainability Testing\\} 
 
-Type: Manual, Nonfunctional, Dynamic
+Type: Manual, Nonfunctional, Static
           
 Initial State: N/A
           
-Input/Condition: Existing Double Pendulum software
+Input/Condition: Existing Double Pendulum system
           
-Output/Result: Update Double Pendulum software
+Output/Result: N/A
           
-How test will be performed: Test team will try to add new features to the
-software or modify some parts of the software. \wss{You need to be more
-  specific.  How would someone actually do this test?}
+How test will be performed: Test team will walkthrough the source code of Double Pendulum, verify if each module performs only one function, which ensures high cohesion and low coupling between modules. \wss{You need to be more specific.  How would someone actually do this test?} \an{by code walkthrough}
 
 \subsubsection{Re-usability}\label{ReuseTest}
 The re-usability test covers the NFR~\ref{R_Reusable}. 
@@ -481,7 +516,7 @@ that all codes are modularized. \wss{This isn't a test, but it would be a good
   Also it is modularity that is being measured, not technically reusability.}
 
 \subsubsection{Portability} \label{PortTest}
-The portability test covers the NFR~\ref{NFR_Portable}.
+The portability test covers the NFR~\ref{R_Portable}.
 
 \paragraph{Portability Testing\\}
 
@@ -491,7 +526,7 @@ Type: Manual, Dynamic
 
 Initial State: Double Pendulum has been successfully installed on a Windows system
           
-Input/Condition: Perform all the functional tests listed in section \ref{sec_fr} . 
+Input/Condition: Perform all the functional tests listed in section \ref{sec_testFR}. 
           
 Output/Result: The software performs all functions successfully. 
 
@@ -501,9 +536,9 @@ How test will be performed: The test will be performed by test team manually.
 
 Type: Manual, Dynamic
 
-Initial State: Dou{}ble Pendulum has been successfully installed on a MacOS system
+Initial State: Double Pendulum has been successfully installed on a MacOS system
           
-Input/Condition: Perform all the functional tests listed in section \ref{sec_fr} . 
+Input/Condition: Perform all the functional tests listed in section \ref{sec_testFR} . 
           
 Output/Result: The software performs all functions successfully. 
           
@@ -522,8 +557,8 @@ How test will be performed: The test will be performed by test team manually.
 \hline
   & \rref{R_Inputs}& \rref{R_VarifyInputs} &  \rref{R_Calculate} & \rref{R_Output}
   & \rref{R_Graphs}& \rref{NFR_Correct}& \rref{NFR_Verifiable} &
-                                                                 \rref{NFR_Reusable}
-  & \rref{NFR_Maintainable} & \rref{NFR_Portable}\\
+                                                                 \rref{R_Reusable}
+  & \rref{R_Maintainable} & \rref{R_Portable}\\
   
 \hline
 \ref{InputVerif}      &x&x&&&&&&&&\\ \hline
