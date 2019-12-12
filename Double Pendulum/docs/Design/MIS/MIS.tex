@@ -746,11 +746,10 @@ file: A text file
 N/A
 \subsubsection{Access Routine Semantics}
 
-\noindent output(fname, $\theta_1$, $\theta_2$.$t$):
+\noindent output(fname, $\theta_1$, $\theta_2$, $t$):
 \begin{itemize}
-\item transition:  Write to environment variable named fname the
-  following: the input
-    parameters from Param, and the calculated values $\theta_1$, $\theta_2$from times $0$ to $t$.  The functions will be output as
+\item transition:  Write to environment variable named fname to output folder the following: the input
+    parameters from Param, and the calculated values $\theta_1$, $\theta_2$ from times $0$ to $t$.  The functions will be output as
     sequences in this file.  The spacing between points in the sequence should
     be selected so that the motion pf the pendulums is captured in the data.
 \item output: N/A
