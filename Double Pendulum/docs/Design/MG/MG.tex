@@ -160,14 +160,14 @@ change.
   hardware on which the software is running.
 \item[\refstepcounter{acnum} \actheacnum \label{acInput}:] The format of the
   initial input data.
-\item[\refstepcounter{acnum} \actheacnum \label{acInputParam}:] The format of
-  the input parameters.
-\item[\refstepcounter{acnum} \actheacnum \label{acConstraints}:] The constraints
-  on the input parameters.
 \item[\refstepcounter{acnum} \actheacnum \label{acOutput}:] The format of the
   final output data.
+\item[\refstepcounter{acnum} \actheacnum \label{acEQ}:] How the governing ODEs are defined using the input parameters. 
+\item[\refstepcounter{acnum} \actheacnum \label{acVE}:] How the velocity equations are defined using the input parameters. 
+\item[\refstepcounter{acnum} \actheacnum \label{acSeq}:] The implementation for the sequence data structure. 
 \item[\refstepcounter{acnum} \actheacnum \label{acODE}:] The algorithm used for
   the ODE solver.
+\item[\refstepcounter{acnum} \actheacnum \label{acPlot}:] The implementation of plotting data.
 \end{description}
 
 \subsection{Unlikely Changes} \label{SecUchange}
@@ -412,10 +412,12 @@ R5 & \mref{mSDS}, \mref{mC}, \mref{mP}\\
 \midrule
 \acref{acHardware} & \mref{mHH}\\
 \acref{acInput} & \mref{mIP}\\
-\acref{acInputParam} & \mref{mIP}\\
-\acref{acConstraints} & \mref{mIP}\\
 \acref{acOutput} & \mref{mOF}\\
+\acref{acEQ} & \mref{mAE}\\
+\acref{acVE} & \mref{mVO}\\
+\acref{acSeq} & \mref{mSDS}\\
 \acref{acODE} & \mref{mODE}\\
+\acref{acPlot} & \mref{mP}\\
 \bottomrule
 \end{tabular}
 \caption{Trace Between Anticipated Changes and Modules}
