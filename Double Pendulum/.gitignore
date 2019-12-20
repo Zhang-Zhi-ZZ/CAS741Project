@@ -48,3 +48,5 @@
 
 # DS Store (for Macs)
 *.DS_Store
+
+*.pyc
